@@ -1,0 +1,24 @@
+{
+  "name": "toisu-middleware-runner",
+  "version": "0.0.0",
+  "description": "The core middleware runner for Toisu!",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint . && mocha"
+  },
+  "keywords": [
+    "toisu",
+    "middleware"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "repository": "qubyte/toisu-middleware-runner",
+  "author": "Mark S. Everitt",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^1.3.1",
+    "mocha": "^2.2.5",
+    "sinon": "^1.16.1"
+  }
+}
