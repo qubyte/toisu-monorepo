@@ -1,0 +1,29 @@
+{
+  "name": "toisu-router",
+  "version": "1.0.0",
+  "description": "A simple routing middleware for Toisu!",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint . && mocha"
+  },
+  "keywords": [
+    "toisu",
+    "middleware",
+    "router"
+  ],
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "repository": "qubyte/toisu-router",
+  "author": "Mark S. Everitt",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "~1.3.0",
+    "mocha": "~2.2.5"
+  },
+  "dependencies": {
+    "path-to-regexp": "~1.2.1",
+    "toisu-middleware-runner": "~1.0.0"
+  }
+}
