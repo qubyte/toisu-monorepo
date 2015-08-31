@@ -32,7 +32,7 @@ const app = new Toisu();
 app.use(async function () {
   const bodyContent = await dbModule.get();
 
-  this.templateData = {bodyContent};
+  this.set('templateData', {bodyContent});
 });
 
 // toisu handlebars compiles the template and returns a middleware function.
