@@ -35,7 +35,7 @@ describe('toisu-handlebars', function () {
     res = {
       setHeader: sandbox.stub(),
       end: sandbox.stub()
-    }
+    };
   });
 
   afterEach(function () {
@@ -74,28 +74,34 @@ describe('toisu-handlebars', function () {
     });
 
     it('renders a template using the default "templateData" field of the toisu context', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(renderStub.callCount, 1);
       assert.deepEqual(renderStub.args[0], [{hello: 'world'}]);
     });
 
     it('renders a template with an empty object if no data is found on the toisu context', function () {
-      middleware.call({}, req, res);
+      middleware.call(new Map(), req, res);
 
       assert.equal(renderStub.callCount, 1);
       assert.deepEqual(renderStub.args[0], [{}]);
     });
 
     it('sets the Content-Type header to the default "text/html"', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(res.setHeader.callCount, 1);
       assert.ok(res.setHeader.calledWithExactly('Content-Type', 'text/html'));
     });
 
     it('calls end with the rendered template and default encoding (utf8)', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(res.end.callCount, 1);
       assert.ok(res.end.calledWithExactly('rendered-template', 'utf8'));
@@ -118,21 +124,27 @@ describe('toisu-handlebars', function () {
     });
 
     it('renders a template using the configured template data field of the toisu context', function () {
-      middleware.call({locals: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('locals', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(renderStub.callCount, 1);
       assert.deepEqual(renderStub.args[0], [{hello: 'world'}]);
     });
 
     it('sets the Content-Type header to the default "text/html"', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(res.setHeader.callCount, 1);
       assert.ok(res.setHeader.calledWithExactly('Content-Type', 'text/html'));
     });
 
     it('calls end with the rendered template and default encoding (utf8)', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(res.end.callCount, 1);
       assert.ok(res.end.calledWithExactly('rendered-template', 'utf8'));
@@ -155,21 +167,27 @@ describe('toisu-handlebars', function () {
     });
 
     it('renders a template using the default "templateData" field of the toisu context, including default data', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(renderStub.callCount, 1);
       assert.deepEqual(renderStub.args[0], [{hello: 'world', something: 'else'}]);
     });
 
     it('sets the Content-Type header to the default "text/html"', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(res.setHeader.callCount, 1);
       assert.ok(res.setHeader.calledWithExactly('Content-Type', 'text/html'));
     });
 
     it('calls end with the rendered template and default encoding (utf8)', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(res.end.callCount, 1);
       assert.ok(res.end.calledWithExactly('rendered-template', 'utf8'));
@@ -192,21 +210,27 @@ describe('toisu-handlebars', function () {
     });
 
     it('renders a template using the default "templateData" field of the toisu context', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(renderStub.callCount, 1);
       assert.deepEqual(renderStub.args[0], [{hello: 'world'}]);
     });
 
     it('sets the Content-Type header to the configured content type', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(res.setHeader.callCount, 1);
       assert.ok(res.setHeader.calledWithExactly('Content-Type', 'application/json'));
     });
 
     it('calls end with the rendered template and default encoding (utf8)', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(res.end.callCount, 1);
       assert.ok(res.end.calledWithExactly('rendered-template', 'utf8'));
@@ -229,21 +253,27 @@ describe('toisu-handlebars', function () {
     });
 
     it('renders a template using the default "templateData" field of the toisu context', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(renderStub.callCount, 1);
       assert.deepEqual(renderStub.args[0], [{hello: 'world'}]);
     });
 
     it('sets the Content-Type header to the default "text/html"', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(res.setHeader.callCount, 1);
       assert.ok(res.setHeader.calledWithExactly('Content-Type', 'text/html'));
     });
 
     it('calls end with the rendered template and the configured encoding', function () {
-      middleware.call({templateData: {hello: 'world'}}, req, res);
+      var context = new Map();
+      context.set('templateData', {hello: 'world'});
+      middleware.call(context, req, res);
 
       assert.equal(res.end.callCount, 1);
       assert.ok(res.end.calledWithExactly('rendered-template', 'blah'));

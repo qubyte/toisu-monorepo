@@ -17,7 +17,8 @@ module.exports = function (template, opts) {
   var options = assign({}, defaults, opts || {});
 
   return function (req, res) {
-    var templateData = assign({}, options.templateDefaults, this[options.templateDataField] || {});
+    var dataFromContext = this.get(options.templateDataField) || {};
+    var templateData = assign({}, options.templateDefaults, dataFromContext);
 
     res.setHeader('Content-Type', options.contentType);
     res.end(render(templateData), options.encoding);
