@@ -110,13 +110,13 @@ describe('Stacks', function () {
     });
 
     describe('matchRequest method', function () {
-      var testStub;
+      var exec;
 
       beforeEach(function () {
-        testStub = sandbox.stub();
+        exec = sandbox.stub();
 
         pathToRegexpStub.returns({
-          test: testStub
+          exec: exec
         });
 
         stacks.add('get', 'some/path', 'options', 'first-middlewares');
@@ -128,15 +128,15 @@ describe('Stacks', function () {
         assert.equal(typeof stacks.matchRequest, 'function');
       });
 
-      it('iterates over the stack assodiated with a method to test regexes against a URL', function () {
+      it('iterates over the stack assodiated with a method to exec regexes against a URL', function () {
         stacks.matchRequest('GET', 'the-url');
 
-        assert.equal(testStub.callCount, 2);
-        assert.ok(testStub.alwaysCalledWith('the-url'));
+        assert.equal(exec.callCount, 2);
+        assert.ok(exec.alwaysCalledWith('the-url'));
       });
 
       it('calls makeParams with the first matching stack keys and parameter list', function () {
-        testStub.returns('a-param-list');
+        exec.returns('a-param-list');
 
         stacks.matchRequest('GET', 'the-url');
 
@@ -146,15 +146,15 @@ describe('Stacks', function () {
       });
 
       it('stops iterating when a match is found', function () {
-        testStub.returns('a-param-list');
+        exec.returns('a-param-list');
 
         stacks.matchRequest('GET', 'the-url');
 
-        assert.equal(testStub.callCount, 1);
+        assert.equal(exec.callCount, 1);
       });
 
       it('returns the middlewares as middlewares and the result of makeParams as params', function () {
-        testStub.returns('a-param-list');
+        exec.returns('a-param-list');
 
         assert.deepEqual(stacks.matchRequest('GET', 'the-url'), {
           params: 'assembled-parameters',
