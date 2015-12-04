@@ -4,7 +4,12 @@
   "description": "Body parsing middleware for Toisu!",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "clean": "rimraf coverage",
+    "lint": "eslint .",
+    "test-node": "tape 'test/**/*.js'",
+    "cover": "istanbul cover tape 'test/**/*.js'",
+    "check-coverage": "istanbul check-coverage --statements 100 --functions 100 --branches 100 --lines 100",
+    "test": "npm run clean && npm run lint && npm run cover && npm run check-coverage && npm run clean"
   },
   "repository": {
     "type": "git",
@@ -25,5 +30,12 @@
   "homepage": "https://github.com/qubyte/toisu-body#readme",
   "dependencies": {
     "body": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "1.10.3",
+    "rimraf": "2.4.4",
+    "sandboxed-module": "2.0.3",
+    "sinon": "1.17.2",
+    "tape": "4.2.2"
   }
 }
