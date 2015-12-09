@@ -1,5 +1,4 @@
 var assert = require('assert');
-var assign = require('object-assign');
 var sinon = require('sinon');
 var SandboxedModule = require('sandboxed-module');
 
@@ -19,8 +18,7 @@ describe('toisu-handlebars', function () {
       requires: {
         handlebars: {
           compile: compileStub
-        },
-        'object-assign': assign
+        }
       }
     });
   });

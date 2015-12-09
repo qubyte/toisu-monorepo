@@ -1,5 +1,4 @@
 var handlebars = require('handlebars');
-var assign = require('object-assign');
 
 var defaults = {
   templateDefaults: {},
@@ -14,11 +13,11 @@ module.exports = function (template, opts) {
   }
 
   var render = handlebars.compile(template);
-  var options = assign({}, defaults, opts || {});
+  var options = Object.assign({}, defaults, opts || {});
 
   return function (req, res) {
     var dataFromContext = this.get(options.templateDataField) || {};
-    var templateData = assign({}, options.templateDefaults, dataFromContext);
+    var templateData = Object.assign({}, options.templateDefaults, dataFromContext);
 
     res.setHeader('Content-Type', options.contentType);
     res.end(render(templateData), options.encoding);
