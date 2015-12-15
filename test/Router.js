@@ -79,8 +79,10 @@ describe('Router', function () {
     });
 
     describe('add method', function () {
+      var returnVal;
+
       beforeEach(function () {
-        router.add('some-method', 'some-path', 'middleware-1', 'middleware-2');
+        returnVal = router.add('some-method', 'some-path', 'middleware-1', 'middleware-2');
       });
 
       it('calls add on the stacks property once', function () {
@@ -94,6 +96,10 @@ describe('Router', function () {
           'options',
           ['middleware-1', 'middleware-2']
         ]);
+      });
+
+      it('returns the router instance', function () {
+        assert.equal(returnVal, router);
       });
     });
 
