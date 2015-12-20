@@ -44,14 +44,20 @@ describe('toisu-middleware-runner', function () {
   it('runs middlewares in sequence', function () {
     runner(req, res, middlewares);
 
-    assert.equal(middlewares[0].callCount, 1);
+    assert.equal(middlewares[0].callCount, 0);
     assert.equal(middlewares[1].callCount, 0);
 
-    deferreds[0].resolve();
-
-    return deferreds[0].promise
+    return Promise.resolve()
       .then(function () {
-        assert.equal(middlewares[1].callCount, 1);
+        assert.equal(middlewares[0].callCount, 1);
+        assert.equal(middlewares[1].callCount, 0);
+
+        deferreds[0].resolve();
+
+        return deferreds[0].promise
+          .then(function () {
+            assert.equal(middlewares[1].callCount, 1);
+          });
       });
   });
 
@@ -119,5 +125,21 @@ describe('toisu-middleware-runner', function () {
     runner(req, res, middlewares).then(doneStub);
 
     assert.equal(doneStub.callCount, 0);
+  });
+
+  it('rejects when the first middleware throws', function () {
+    var err = new Error();
+
+    middlewares[0].throws(err);
+
+    return runner(req, res, middlewares)
+      .then(
+        function () {
+          throw new Error('Runner should reject.');
+        },
+        function (err) {
+          assert.equal(err, err);
+        }
+      );
   });
 });
