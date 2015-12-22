@@ -1,17 +1,17 @@
 'use strict';
 
-var assert = require('assert');
-var makeParams = require('../lib/makeParams');
+const assert = require('assert');
+const makeParams = require('../lib/makeParams');
 
-describe('makeParams', function () {
-  var defs;
-  var list;
-  var params;
+describe('makeParams', () => {
+  let defs;
+  let list;
+  let params;
 
-  beforeEach(function () {
+  beforeEach(() => {
     defs = [
-      {name: 'foo'},
-      {name: 'bar'}
+      { name: 'foo' },
+      { name: 'bar' }
     ];
 
     list = [
@@ -23,15 +23,15 @@ describe('makeParams', function () {
     params = makeParams(defs, list);
   });
 
-  it('is a function', function () {
+  it('is a function', () => {
     assert.equal(typeof makeParams, 'function');
   });
 
-  it('retuns an object with no prototype', function () {
+  it('retuns an object with no prototype', () => {
     assert.equal(Object.getPrototypeOf(params), null);
   });
 
-  it('returns an object with merged param definitions and param values', function () {
+  it('returns an object with merged param definitions and param values', () => {
     assert.deepEqual(params, {
       foo: 'abc',
       bar: 'def'
