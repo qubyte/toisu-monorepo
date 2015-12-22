@@ -1,18 +1,18 @@
 'use strict';
 
-var assert = require('assert');
-var sinon = require('sinon');
-var SandboxedModule = require('sandboxed-module');
+const assert = require('assert');
+const sinon = require('sinon');
+const SandboxedModule = require('sandboxed-module');
 
-describe('Router', function () {
-  var sandbox = sinon.sandbox.create();
+describe('Router', () => {
+  const sandbox = sinon.sandbox.create();
 
-  var Router;
-  var StacksStub;
-  var makeMiddlewareStub;
-  var fakeStacks;
+  let Router;
+  let StacksStub;
+  let makeMiddlewareStub;
+  let fakeStacks;
 
-  before(function () {
+  before(() => {
     StacksStub = sinon.stub();
     makeMiddlewareStub = sinon.stub();
 
@@ -24,13 +24,13 @@ describe('Router', function () {
     });
   });
 
-  afterEach(function () {
+  afterEach(() => {
     StacksStub.reset();
     makeMiddlewareStub.reset();
     sandbox.restore();
   });
 
-  beforeEach(function () {
+  beforeEach(() => {
     fakeStacks = {
       add: sandbox.stub()
     };
@@ -39,57 +39,45 @@ describe('Router', function () {
     makeMiddlewareStub.returns('the-middleware');
   });
 
-  it('is a function', function () {
+  it('is a function', () => {
     assert.equal(typeof Router, 'function');
   });
 
-  it('throws when called without new', function () {
-    assert.throws(
-      function () {
-        return Router(); // eslint-disable-line
-      },
-      function (err) {
-        return err instanceof Error;
-      },
-      'Cannot call a class as a function'
-    );
-  });
+  describe('instances', () => {
+    let router;
 
-  describe('instances', function () {
-    var router;
-
-    beforeEach(function () {
+    beforeEach(() => {
       router = new Router('options');
     });
 
-    it('uses an empty object for the options property when initialized without options', function () {
-      var router = new Router();
+    it('uses an empty object for the options property when initialized without options', () => {
+      const router = new Router();
 
       assert.deepEqual(router.options, {});
     });
 
-    it('uses the passed in options as the options property', function () {
+    it('uses the passed in options as the options property', () => {
       assert.equal(router.options, 'options');
     });
 
-    it('initialises a router object with middleware stacks', function () {
+    it('initialises a router object with middleware stacks', () => {
       assert.equal(StacksStub.callCount, 1);
       assert.ok(StacksStub.calledWithNew());
       assert.equal(router.stacks, fakeStacks);
     });
 
-    describe('add method', function () {
-      var returnVal;
+    describe('add method', () => {
+      let returnVal;
 
-      beforeEach(function () {
+      beforeEach(() => {
         returnVal = router.add('some-method', 'some-path', 'middleware-1', 'middleware-2');
       });
 
-      it('calls add on the stacks property once', function () {
+      it('calls add on the stacks property once', () => {
         assert.equal(fakeStacks.add.callCount, 1);
       });
 
-      it('passes the method, the path, the options, and the middlewares to stacks.add', function () {
+      it('passes the method, the path, the options, and the middlewares to stacks.add', () => {
         assert.deepEqual(fakeStacks.add.args[0], [
           'some-method',
           'some-path',
@@ -98,24 +86,24 @@ describe('Router', function () {
         ]);
       });
 
-      it('returns the router instance', function () {
+      it('returns the router instance', () => {
         assert.equal(returnVal, router);
       });
     });
 
-    describe('middleware getter', function () {
-      var middleware;
+    describe('middleware getter', () => {
+      let middleware;
 
-      beforeEach(function () {
+      beforeEach(() => {
         middleware = router.middleware;
       });
 
-      it('calls makeMiddleware with this', function () {
+      it('calls makeMiddleware with this', () => {
         assert.equal(makeMiddlewareStub.callCount, 1);
         assert.equal(makeMiddlewareStub.args[0][0], router);
       });
 
-      it('is the return value of makeMiddleware', function () {
+      it('is the return value of makeMiddleware', () => {
         assert.equal(middleware, 'the-middleware');
       });
     });

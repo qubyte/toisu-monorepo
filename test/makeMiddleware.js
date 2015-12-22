@@ -1,16 +1,17 @@
 'use strict';
 
-var assert = require('assert');
-var sinon = require('sinon');
-var SandboxedModule = require('sandboxed-module');
+const assert = require('assert');
+const sinon = require('sinon');
+const SandboxedModule = require('sandboxed-module');
 
-describe('makeMiddleware', function () {
-  var sandbox = sinon.sandbox.create();
-  var makeMiddleware;
-  var runnerStub;
-  var fakeRouter;
+describe('makeMiddleware', () => {
+  const sandbox = sinon.sandbox.create();
 
-  before(function () {
+  let makeMiddleware;
+  let runnerStub;
+  let fakeRouter;
+
+  before(() => {
     runnerStub = sinon.stub();
 
     makeMiddleware = SandboxedModule.require('../lib/makeMiddleware', {
@@ -20,12 +21,12 @@ describe('makeMiddleware', function () {
     });
   });
 
-  afterEach(function () {
+  afterEach(() => {
     sandbox.restore();
     runnerStub.reset();
   });
 
-  beforeEach(function () {
+  beforeEach(() => {
     runnerStub.returns('runner-return-value');
 
     fakeRouter = {
@@ -35,49 +36,49 @@ describe('makeMiddleware', function () {
     };
   });
 
-  it('is a function', function () {
+  it('is a function', () => {
     assert.equal(typeof makeMiddleware, 'function');
   });
 
-  describe('when called', function () {
-    var middleware;
+  describe('when called', () => {
+    let middleware;
 
-    beforeEach(function () {
+    beforeEach(() => {
       middleware = makeMiddleware(fakeRouter);
     });
 
-    it('returns a function', function () {
+    it('returns a function', () => {
       assert.equal(typeof middleware, 'function');
     });
 
-    describe('middleware', function () {
-      var req;
-      var res;
-      var context;
+    describe('middleware', () => {
+      let req;
+      let res;
+      let context;
 
-      beforeEach(function () {
-        req = {method: 'a-method', url: 'a-url'};
+      beforeEach(() => {
+        req = { method: 'a-method', url: 'a-url' };
         res = 'res';
         context = {
           set: sandbox.stub()
         };
       });
 
-      it('calls router.stacks.matchRequest with the method and url', function () {
+      it('calls router.stacks.matchRequest with the method and url', () => {
         middleware.call(context, req, res);
 
         assert.equal(fakeRouter.stacks.matchRequest.callCount, 1);
         assert.deepEqual(fakeRouter.stacks.matchRequest.args[0], ['a-method', 'a-url']);
       });
 
-      it('does nothing when the router had no matching middleware stack for the route and method', function () {
+      it('does nothing when the router had no matching middleware stack for the route and method', () => {
         middleware.call(context, req, res);
 
         assert.equal(runnerStub.callCount, 0);
         assert.equal(context.set.callCount, 0);
       });
 
-      it('sets the params to the context when a stack matches the route and method', function () {
+      it('sets the params to the context when a stack matches the route and method', () => {
         fakeRouter.stacks.matchRequest.returns({
           params: 'some-params',
           middlewares: 'some-middlewares'
@@ -89,7 +90,7 @@ describe('makeMiddleware', function () {
         assert.deepEqual(context.set.args[0], ['params', 'some-params']);
       });
 
-      it('calls the runner with the middleware stack, with the context', function () {
+      it('calls the runner with the middleware stack, with the context', () => {
         fakeRouter.stacks.matchRequest.returns({
           params: 'some-params',
           middlewares: 'some-middlewares'
@@ -104,7 +105,7 @@ describe('makeMiddleware', function () {
         assert.equal(runnerStub.args[0][2], 'some-middlewares');
       });
 
-      it('returns the return of the runner', function () {
+      it('returns the return of the runner', () => {
         fakeRouter.stacks.matchRequest.returns({
           params: 'some-params',
           middlewares: 'some-middlewares'
