@@ -6,14 +6,13 @@ const SandboxedModule = require('sandboxed-module');
 
 describe('makeMiddleware', () => {
   const sandbox = sinon.sandbox.create();
+  const runnerStub = sandbox.stub();
 
   let makeMiddleware;
-  let runnerStub;
-  let fakeRouter;
+  let middleware;
+  let routes;
 
   before(() => {
-    runnerStub = sinon.stub();
-
     makeMiddleware = SandboxedModule.require('../lib/makeMiddleware', {
       requires: {
         'toisu-middleware-runner': runnerStub
@@ -21,97 +20,80 @@ describe('makeMiddleware', () => {
     });
   });
 
-  afterEach(() => {
-    sandbox.restore();
-    runnerStub.reset();
+  beforeEach(() => {
+    routes = [
+      { match: sandbox.stub() },
+      { match: sandbox.stub() },
+      { match: sandbox.stub() }
+    ];
+
+    middleware = makeMiddleware(routes);
   });
 
-  beforeEach(() => {
-    runnerStub.returns('runner-return-value');
-
-    fakeRouter = {
-      stacks: {
-        matchRequest: sandbox.stub()
-      }
-    };
+  afterEach(() => {
+    sandbox.reset();
   });
 
   it('is a function', () => {
     assert.equal(typeof makeMiddleware, 'function');
   });
 
-  describe('when called', () => {
-    let middleware;
+  it('returns a function', () => {
+    assert.equal(typeof middleware, 'function');
+  });
 
-    beforeEach(() => {
-      middleware = makeMiddleware(fakeRouter);
-    });
-
-    it('returns a function', () => {
-      assert.equal(typeof middleware, 'function');
-    });
-
-    describe('middleware', () => {
-      let req;
-      let res;
-      let context;
+  describe('calls to the middleware', () => {
+    describe('when no routes match', () => {
+      let returnVal;
 
       beforeEach(() => {
-        req = { method: 'a-method', url: 'a-url' };
-        res = 'res';
-        context = {
-          set: sandbox.stub()
-        };
+        returnVal = middleware.call(new Map(), 'req', 'res');
       });
 
-      it('calls router.stacks.matchRequest with the method and url', () => {
-        middleware.call(context, req, res);
+      it('calls each .match on each router with the request', () => {
+        assert.deepEqual(routes[0].match.args, [['req']]);
+        assert.deepEqual(routes[1].match.args, [['req']]);
+        assert.deepEqual(routes[2].match.args, [['req']]);
 
-        assert.equal(fakeRouter.stacks.matchRequest.callCount, 1);
-        assert.deepEqual(fakeRouter.stacks.matchRequest.args[0], ['a-method', 'a-url']);
+        assert.ok(routes[0].match.calledBefore(routes[1].match));
+        assert.ok(routes[1].match.calledBefore(routes[2].match));
       });
 
-      it('does nothing when the router had no matching middleware stack for the route and method', () => {
-        middleware.call(context, req, res);
+      it('returns undefined', () => {
+        assert.strictEqual(returnVal, undefined);
+      });
+    });
 
-        assert.equal(runnerStub.callCount, 0);
-        assert.equal(context.set.callCount, 0);
+    describe('when a route matches', () => {
+      let context;
+      let returnVal;
+
+      beforeEach(() => {
+        routes[1].match.returns({ params: 'some-params', middlewares: 'some-middlewares' });
+        runnerStub.returns('runner-return-val');
+        context = new Map();
+        returnVal = middleware.call(context, 'req', 'res');
       });
 
-      it('sets the params to the context when a stack matches the route and method', () => {
-        fakeRouter.stacks.matchRequest.returns({
-          params: 'some-params',
-          middlewares: 'some-middlewares'
-        });
+      it('stops calling .match when a request matches a route', () => {
+        assert.deepEqual(routes[0].match.args, [['req']]);
+        assert.deepEqual(routes[1].match.args, [['req']]);
+        assert.deepEqual(routes[2].match.callCount, 0);
 
-        middleware.call(context, req, res);
-
-        assert.equal(context.set.callCount, 1);
-        assert.deepEqual(context.set.args[0], ['params', 'some-params']);
+        assert.ok(routes[0].match.calledBefore(routes[1].match));
       });
 
-      it('calls the runner with the middleware stack, with the context', () => {
-        fakeRouter.stacks.matchRequest.returns({
-          params: 'some-params',
-          middlewares: 'some-middlewares'
-        });
+      it('sets parameters on the context', () => {
+        assert.equal(context.get('params'), 'some-params');
+      });
 
-        middleware.call(context, req, res);
-
-        assert.equal(runnerStub.callCount, 1);
+      it('passes the middlewares to toisu-middleware-runner with the context', () => {
+        assert.deepEqual(runnerStub.args, [['req', 'res', 'some-middlewares']]);
         assert.equal(runnerStub.thisValues[0], context);
-        assert.equal(runnerStub.args[0][0], req);
-        assert.equal(runnerStub.args[0][1], res);
-        assert.equal(runnerStub.args[0][2], 'some-middlewares');
       });
 
-      it('returns the return of the runner', () => {
-        fakeRouter.stacks.matchRequest.returns({
-          params: 'some-params',
-          middlewares: 'some-middlewares'
-        });
-
-        assert.equal(middleware.call(context, req, res), 'runner-return-value');
+      it('returns the return value of the call to toisu-middleware-runner', () => {
+        assert.equal(returnVal, 'runner-return-val');
       });
     });
   });
