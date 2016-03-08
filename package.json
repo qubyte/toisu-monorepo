@@ -19,14 +19,16 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "~1.10.3",
-    "mocha": "~2.2.5",
-    "sandboxed-module": "^2.0.2",
-    "sinon": "^1.16.1"
+    "eslint": "2.3.0",
+    "mocha": "2.4.5",
+    "sandboxed-module": "2.0.3",
+    "sinon": "1.17.3",
+    "supertest": "1.2.0",
+    "toisu": "2.2.1"
   },
   "dependencies": {
-    "path-to-regexp": "~1.2.1",
-    "toisu-middleware-runner": "~1.0.0"
+    "path-to-regexp": "1.2.1",
+    "toisu-middleware-runner": "1.0.2"
   },
   "engines": {
     "node": ">=4.2"
