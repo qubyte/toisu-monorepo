@@ -4,17 +4,15 @@ const assert = require('assert');
 const makeParams = require('../lib/makeParams');
 
 describe('makeParams', () => {
-  let defs;
-  let list;
   let params;
 
   beforeEach(() => {
-    defs = [
+    const defs = [
       { name: 'foo' },
       { name: 'bar' }
     ];
 
-    list = [
+    const list = [
       'something-path-related',
       'abc',
       'def'
