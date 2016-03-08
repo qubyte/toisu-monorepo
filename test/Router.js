@@ -1,111 +1,76 @@
 'use strict';
 
 const assert = require('assert');
-const sinon = require('sinon');
 const SandboxedModule = require('sandboxed-module');
+const sinon = require('sinon');
 
 describe('Router', () => {
   const sandbox = sinon.sandbox.create();
+  const RouteStub = sandbox.stub();
+  const makeMiddlewareStub = sandbox.stub();
+  const route0 = {};
+  const route1 = {};
+  const route2 = {};
 
   let Router;
-  let StacksStub;
-  let makeMiddlewareStub;
-  let fakeStacks;
 
   before(() => {
-    StacksStub = sinon.stub();
-    makeMiddlewareStub = sinon.stub();
+    RouteStub.onCall(0).returns(route0);
+    RouteStub.onCall(1).returns(route1);
+    RouteStub.onCall(2).returns(route2);
 
     Router = SandboxedModule.require('../lib/Router', {
       requires: {
-        './Stacks': StacksStub,
-        './makeMiddleware': makeMiddlewareStub
+        './Route': RouteStub,
+        './makeMiddleware': makeMiddlewareStub.returns('middleware')
       }
     });
   });
 
   afterEach(() => {
-    StacksStub.reset();
-    makeMiddlewareStub.reset();
-    sandbox.restore();
+    sandbox.reset();
   });
 
-  beforeEach(() => {
-    fakeStacks = {
-      add: sandbox.stub()
-    };
-
-    StacksStub.returns(fakeStacks);
-    makeMiddlewareStub.returns('the-middleware');
+  it('constructs instances of itself', () => {
+    assert.ok(new Router() instanceof Router);
   });
 
-  it('is a function', () => {
-    assert.equal(typeof Router, 'function');
-  });
-
-  describe('instances', () => {
+  describe('route', () => {
     let router;
 
     beforeEach(() => {
-      router = new Router('options');
+      router = new Router();
     });
 
-    it('uses an empty object for the options property when initialized without options', () => {
+    it('constructs a new Route with the given parameters', () => {
+      router.route('test-path', 'middlewares', 'options-to-path-to-regexp');
+
+      assert.deepEqual(RouteStub.args, [['test-path', 'middlewares', 'options-to-path-to-regexp']]);
+      assert.ok(RouteStub.calledWithNew(), true);
+    });
+  });
+
+  describe('get middleware', () => {
+    let middleware;
+
+    beforeEach(() => {
       const router = new Router();
-
-      assert.deepEqual(router.options, {});
+      router.route('test-path-0', 'middlewares-0', 'options-to-path-to-regexp-0');
+      router.route('test-path-1', 'middlewares-1', 'options-to-path-to-regexp-1');
+      router.route('test-path-2', 'middlewares-2', 'options-to-path-to-regexp-2');
+      middleware = router.middleware;
     });
 
-    it('uses the passed in options as the options property', () => {
-      assert.equal(router.options, 'options');
+    it('calls makeMiddleware with a list of routes', () => {
+      assert.equal(makeMiddlewareStub.callCount, 1);
+      assert.equal(makeMiddlewareStub.args[0][0].length, 3);
+      assert.equal(makeMiddlewareStub.args[0][0][0], route0);
+      assert.equal(makeMiddlewareStub.args[0][0][1], route1);
+      assert.equal(makeMiddlewareStub.args[0][0][2], route2);
     });
 
-    it('initialises a router object with middleware stacks', () => {
-      assert.equal(StacksStub.callCount, 1);
-      assert.ok(StacksStub.calledWithNew());
-      assert.equal(router.stacks, fakeStacks);
-    });
-
-    describe('add method', () => {
-      let returnVal;
-
-      beforeEach(() => {
-        returnVal = router.add('some-method', 'some-path', 'middleware-1', 'middleware-2');
-      });
-
-      it('calls add on the stacks property once', () => {
-        assert.equal(fakeStacks.add.callCount, 1);
-      });
-
-      it('passes the method, the path, the options, and the middlewares to stacks.add', () => {
-        assert.deepEqual(fakeStacks.add.args[0], [
-          'some-method',
-          'some-path',
-          'options',
-          ['middleware-1', 'middleware-2']
-        ]);
-      });
-
-      it('returns the router instance', () => {
-        assert.equal(returnVal, router);
-      });
-    });
-
-    describe('middleware getter', () => {
-      let middleware;
-
-      beforeEach(() => {
-        middleware = router.middleware;
-      });
-
-      it('calls makeMiddleware with this', () => {
-        assert.equal(makeMiddlewareStub.callCount, 1);
-        assert.equal(makeMiddlewareStub.args[0][0], router);
-      });
-
-      it('is the return value of makeMiddleware', () => {
-        assert.equal(middleware, 'the-middleware');
-      });
+    it('returns the return value of makeMiddleware', () => {
+      assert.equal(middleware, 'middleware');
     });
   });
 });
