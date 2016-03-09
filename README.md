@@ -5,8 +5,8 @@ The Toisu! router provides routing logic, using routing string like those of Exp
 ## Usage
 
 Internally the Toisu! router uses [path-to-regexp](https://www.npmjs.com/package/path-to-regexp).
-When constructing router objects, the options parameter is passed along to `path-to-regexp`. See
-that package for what forms the strings can take (this should be familiar to express users).
+When adding routes, the options parameter is passed along to `path-to-regexp`. See that package for
+what forms the strings can take (this should be familiar to express users).
 
 ```javascript
 const Toisu = require('toisu');
@@ -14,7 +14,7 @@ const Router = require('toisu-router');
 const http;
 
 const app = new Toisu();
-const router = new Router(options);
+const router = new Router();
 
 router.route('/some/resource/:id', {
   get: [middleware1, middleware2],
@@ -42,3 +42,39 @@ function middleware1(req, res) {
 
 Routed middleware functions are in every other respect the same as unrouted middleware functions,
 and receive the same context.
+
+## API
+
+### class `Router`
+
+```javascript
+const router = new Router();
+```
+
+### `router.route(path, handlers, [options])`
+
+The optional `options` object is passed to `path-to-regexp`, which is responsible for parsing the
+path string. When a route and HTTP method match, parameters will be parsed from the string into an
+object, which is appended to the context map as `this.get('params')`
+
+```javascript
+function middleware(req, res) {
+  const params = this.get('params');
+
+  console.log(params); // { someData: <determined by req.url> }
+}
+
+router.route('/some/test/path/:someData', {
+  GET: [middleware]
+});
+```
+
+### `middleware = router.middleware`
+
+This can be consumed by a Toisu! `app.use` call.
+
+```javascript
+const app = new Toisu();
+
+app.use(router.middleware);
+```
