@@ -9,7 +9,12 @@ When constructing router objects, the options parameter is passed along to `path
 that package for what forms the strings can take (this should be familiar to express users).
 
 ```javascript
-const router = new ToisuRouter(options);
+const Toisu = require('toisu');
+const Router = require('toisu-router');
+const http;
+
+const app = new Toisu();
+const router = new Router(options);
 
 router.route('/some/resource/:id', {
   get: [middleware1, middleware2],
@@ -17,6 +22,8 @@ router.route('/some/resource/:id', {
 });
 
 app.use(router.middleware);
+
+http.createServer(app.requestHandler).listen(3000);
 ```
 
 The methods for a route are given a list of middleware each. If the router handles a request which
