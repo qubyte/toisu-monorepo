@@ -2,16 +2,8 @@
 
 var assert = require('assert');
 var sinon = require('sinon');
+var Deferred = require('es2015-deferred');
 var runner = require('../');
-
-function Deferred() {
-  var deferred = this;
-
-  deferred.promise = new Promise(function (resolve, reject) {
-    deferred.resolve = resolve;
-    deferred.reject = reject;
-  });
-}
 
 describe('toisu-middleware-runner', function () {
   var sandbox = sinon.sandbox.create();
