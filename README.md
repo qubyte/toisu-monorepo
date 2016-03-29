@@ -1,8 +1,9 @@
 # Toisu! middleware runner
 
-Toisu runs middlewares in sequence, waiting for promises from middlwares to resolve before
-continuing to the next. It's function shared by Toisu! and the Toisu! router, but alternative
-routers and other modules may find it useful.
+Toisu! runs middlewares in sequence, waiting for promises from middlwares to resolve (when promises
+are returned) before continuing to the next. This module contains a function which does this
+sequential middleware execution. This logic has been placed in its own module since both `toisu` and
+`toisu-router` use it. Other modules intended to work with Toisu! might also find it useful.
 
 ## usage
 
@@ -16,10 +17,10 @@ const runner = require('toisu-middleware-runner');
 
 // context will be used as the `this` value for middlewares.
 runner.call(context, req, res, middlewares)
-  .then(function () {
+  .then(() => {
     // Run when either all middlewares have been used, or one called `res.end()`.
   })
-  .catch(function (err) {
+  .catch(err => {
     // Run when a middleware threw.
   });
 ```
@@ -33,7 +34,7 @@ async function example() {
     await runner.call(context, req, res, middlwares);
   } catch (e) {
     // Handle errors.
-    return
+    return;
   }
 
   // When either all middlewares have been used, or one called `res.end()`.
