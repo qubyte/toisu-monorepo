@@ -2,6 +2,9 @@
   "env": {
     "node": true
   },
+  "globals": {
+    Promise: true
+  },
   "rules": {
     "no-eval": 2,
     "no-console": 2,
