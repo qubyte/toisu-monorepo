@@ -1,5 +1,9 @@
 # History
 
+## v3.1.0
+
+Minor version bump of path-to-reject to v1.5.3.
+
 ## v3.0.0
 
 Complete overhaul of the API. The `get` method has been dropped and a `route` method added. The
