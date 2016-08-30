@@ -19,7 +19,7 @@ describe('toisu-middleware-runner', function () {
 
   beforeEach(function () {
     req = {};
-    res = {writable: true};
+    res = { writable: true };
 
     deferreds = [new Deferred(), new Deferred()];
     middlewares = deferreds.map(makeFakeMiddleware);
