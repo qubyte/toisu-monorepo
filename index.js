@@ -6,26 +6,15 @@ var formBody = require('body/form');
 var anyBody = require('body/any');
 var parseGeneric = require('./lib/parseGeneric');
 
-exports.text = function (options) {
-  return function parseText(req, res) {
-    return parseGeneric(req, res, options, textBody, this);
+function makeMiddleware(parser) {
+  return function (options) {
+    return function (req, res) {
+      return parseGeneric(req, res, options, parser, this);
+    };
   };
-};
+}
 
-exports.json = function (options) {
-  return function parseJson(req, res) {
-    return parseGeneric(req, res, options, jsonBody, this);
-  };
-};
-
-exports.form = function (options) {
-  return function parseForm(req, res) {
-    return parseGeneric(req, res, options, formBody, this);
-  };
-};
-
-exports.any = function (options) {
-  return function parseAny(req, res) {
-    return parseGeneric(req, res, options, anyBody, this);
-  };
-};
+exports.text = makeMiddleware(textBody);
+exports.json = makeMiddleware(jsonBody);
+exports.form = makeMiddleware(formBody);
+exports.any = makeMiddleware(anyBody);

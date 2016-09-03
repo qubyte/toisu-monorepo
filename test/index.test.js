@@ -10,7 +10,7 @@ var parseGenericStub = sinon.stub().returns('parse-generic-return-value');
 var toisuBody = SandboxedModule.require('../', {
   requires: {
     './lib/parseGeneric': parseGenericStub,
-    'body': 'text-body',
+    body: 'text-body',
     'body/json': 'json-body',
     'body/form': 'form-body',
     'body/any': 'any-body'
