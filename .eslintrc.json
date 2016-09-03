@@ -1,0 +1,10 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": "qubyte",
+  "rules": {
+    "no-invalid-this": "off",
+    "max-params": ["error", 5]
+  }
+}

@@ -32,7 +32,8 @@
     "body": "^5.1.0"
   },
   "devDependencies": {
-    "eslint": "1.10.3",
+    "eslint": "3.4.0",
+    "eslint-config-qubyte": "1.0.1",
     "istanbul": "0.4.1",
     "rimraf": "2.4.4",
     "sandboxed-module": "2.0.3",
