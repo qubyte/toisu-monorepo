@@ -1,3 +1,5 @@
+'use strict';
+
 var handlebars = require('handlebars');
 
 var defaults = {
