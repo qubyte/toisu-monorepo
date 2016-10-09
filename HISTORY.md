@@ -2,7 +2,7 @@
 
 ## v3.1.0
 
-Minor version bump of path-to-reject to v1.5.3.
+Minor version bump of path-to-regexp to v1.5.3.
 
 ## v3.0.0
 
