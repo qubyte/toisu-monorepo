@@ -1,6 +1,6 @@
 # toisu-static
 
-A simple wrapper around serve-static for Toisu!
+A tiny wrapper around serve-static for Toisu!
 
 This module accepts the same arguments as
 [serve-static](https://github.com/expressjs/serve-static).
@@ -17,5 +17,5 @@ const app = new Toisu();
 // Serve the "public" directory (relative to the app root).
 app.use(serveStatic('public'));
 
-server.listen(3000);
+http.createServer(app).listen(3000);
 ```
