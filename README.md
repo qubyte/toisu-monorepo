@@ -11,7 +11,7 @@ what forms the strings can take (this should be familiar to express users).
 ```javascript
 const Toisu = require('toisu');
 const Router = require('toisu-router');
-const http;
+const http = require('http');
 
 const app = new Toisu();
 const router = new Router();
