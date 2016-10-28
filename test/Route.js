@@ -106,5 +106,23 @@ describe('Route', () => {
         assert.equal(result.middlewares, getMiddlewares);
       });
     });
+
+    describe('requests with the same path, a matchin HTTP method, and a search string', () => {
+      let result;
+
+      beforeEach(() => {
+        result = route.match({ url: '/some/path/123?blah=bleh', method: 'GET' });
+      });
+
+      it('returns an object with a params object and a middlewares array', () => {
+        assert.deepEqual(Object.keys(result).sort(), ['middlewares', 'params']);
+        assert.deepEqual(result.params, { someParam: '123' });
+        assert.ok(Array.isArray(result.middlewares));
+      });
+
+      it('uses the handler middlwares in the returned object', () => {
+        assert.equal(result.middlewares, getMiddlewares);
+      });
+    });
   });
 });

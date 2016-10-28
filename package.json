@@ -28,8 +28,8 @@
     "toisu": "3.0.2"
   },
   "dependencies": {
-    "path-to-regexp": "1.5.3",
-    "toisu-middleware-runner": "1.0.3"
+    "path-to-regexp": "1.6.0",
+    "toisu-middleware-runner": "1.0.4"
   },
   "engines": {
     "node": ">=4.2"
