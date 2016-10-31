@@ -1,5 +1,9 @@
 # History
 
+## v4.0.0
+
+Fixes an issue with query parameters breaking URL path matching.
+
 ## v3.1.0
 
 Minor version bump of path-to-regexp to v1.5.3.
