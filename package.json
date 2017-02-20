@@ -6,6 +6,9 @@
   "scripts": {
     "test": "eslint . && mocha"
   },
+  "engines": {
+    "node": ">=7.6"
+  },
   "keywords": [
     "toisu",
     "middleware"
@@ -17,10 +20,10 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "devDependencies": {
-    "es2015-deferred": "^2.0.1",
-    "eslint": "^3.4.0",
-    "eslint-config-qubyte": "^1.0.1",
-    "mocha": "^3.0.2",
-    "sinon": "^1.17.5"
+    "es2015-deferred": "^2.0.2",
+    "eslint": "^3.16.0",
+    "eslint-config-qubyte": "^1.1.0",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7"
   }
 }

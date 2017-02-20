@@ -1,19 +1,13 @@
 'use strict';
 
-function runner(req, res, middlewares) {
-  var context = this;
+async function runner(req, res, middlewares = []) {
+  for (const middleware of middlewares) {
+    if (res.headersSent || !res.writable) {
+      return;
+    }
 
-  function makeWrapper(index) {
-    return function wrapper() {
-      var middleware = middlewares && middlewares[index];
-
-      if (middleware && !res.headersSent && res.writable) {
-        return Promise.resolve(middleware.call(context, req, res)).then(makeWrapper(index + 1));
-      }
-    };
+    await middleware.call(this, req, res);
   }
-
-  return Promise.resolve().then(makeWrapper(0));
 }
 
 module.exports = runner;
