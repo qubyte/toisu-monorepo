@@ -1,5 +1,7 @@
 # Toisu! middleware runner
 
+For Node.js versions less than 7.6 please use the 1.x line of releases.
+
 Toisu! runs middlewares in sequence, waiting for promises from middlwares to resolve (when promises
 are returned) before continuing to the next. This module contains a function which does this
 sequential middleware execution. This logic has been placed in its own module since both `toisu` and
