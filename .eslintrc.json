@@ -2,7 +2,7 @@
   "env": {
     "node": true
   },
-  "extends": "qubyte",
+  "extends": "qubyte/ES2015",
   "rules": {
     "no-invalid-this": "off",
     "max-params": ["error", 5]

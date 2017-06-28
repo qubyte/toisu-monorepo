@@ -1,11 +1,11 @@
 'use strict';
 
-var assert = require('assert');
-var sinon = require('sinon');
-var SandboxedModule = require('sandboxed-module');
+const assert = require('assert');
+const sinon = require('sinon');
+const SandboxedModule = require('sandboxed-module');
 
-var parseGenericStub = sinon.stub().returns('parse-generic-return-value');
-var toisuBody = SandboxedModule.require('../', {
+const parseGenericStub = sinon.stub().returns('parse-generic-return-value');
+const toisuBody = SandboxedModule.require('../', {
   requires: {
     './lib/parseGeneric': parseGenericStub,
     body: 'text-body',
@@ -15,17 +15,17 @@ var toisuBody = SandboxedModule.require('../', {
   }
 });
 
-describe('toisuBody', function () {
-  afterEach(function () {
+describe('toisuBody', () => {
+  afterEach(() => {
     parseGenericStub.reset();
   });
 
-  it('is an object', function () {
+  it('is an object', () => {
     assert.equal(typeof toisuBody, 'object', 'is an object');
     assert.ok(toisuBody, 'is not null');
   });
 
-  it('has text, json, form, and any methods', function () {
+  it('has text, json, form, and any methods', () => {
     assert.deepEqual(Object.keys(toisuBody).sort(), ['any', 'form', 'json', 'text'], 'correct property names');
     assert.equal(typeof toisuBody.text, 'function', 'text is a method');
     assert.equal(typeof toisuBody.json, 'function', 'json is a method');
@@ -33,13 +33,13 @@ describe('toisuBody', function () {
     assert.equal(typeof toisuBody.any, 'function', 'any is a method');
   });
 
-  describe('the text method', function () {
-    it('returns a function', function () {
+  describe('the text method', () => {
+    it('returns a function', () => {
       assert.equal(typeof toisuBody.text('options'), 'function', 'is a function');
     });
 
-    it('the returned function passes req, res, options, the textBody function and the context', function () {
-      var middleware = toisuBody.text('options');
+    it('the returned function passes req, res, options, the textBody function and the context', () => {
+      const middleware = toisuBody.text('options');
 
       middleware.call('the-context', 'req', 'res');
 
@@ -48,13 +48,13 @@ describe('toisuBody', function () {
     });
   });
 
-  describe('the json method', function () {
-    it('returns a function', function () {
+  describe('the json method', () => {
+    it('returns a function', () => {
       assert.equal(typeof toisuBody.json('options'), 'function', 'is a function');
     });
 
-    it('the returned function passes req, res, options, the jsonBody function and the context to parseGeneric', function () {
-      var middleware = toisuBody.json('options');
+    it('the returned function passes req, res, options, the jsonBody function and the context to parseGeneric', () => {
+      const middleware = toisuBody.json('options');
 
       middleware.call('the-context', 'req', 'res');
 
@@ -63,13 +63,13 @@ describe('toisuBody', function () {
     });
   });
 
-  describe('the form method', function () {
-    it('returns a function', function () {
+  describe('the form method', () => {
+    it('returns a function', () => {
       assert.equal(typeof toisuBody.form('options'), 'function', 'is a function');
     });
 
-    it('the returned function passes req, res, options, the formBody function and the context to parseGeneric', function () {
-      var middleware = toisuBody.form('options');
+    it('the returned function passes req, res, options, the formBody function and the context to parseGeneric', () => {
+      const middleware = toisuBody.form('options');
 
       middleware.call('the-context', 'req', 'res');
 
@@ -78,13 +78,13 @@ describe('toisuBody', function () {
     });
   });
 
-  describe('the any method', function () {
-    it('returns a function', function () {
+  describe('the any method', () => {
+    it('returns a function', () => {
       assert.equal(typeof toisuBody.any('options'), 'function', 'is a function');
     });
 
-    it('the returned function passes req, res, options, the anyBody function and the context to parseGeneric', function () {
-      var middleware = toisuBody.any('options');
+    it('the returned function passes req, res, options, the anyBody function and the context to parseGeneric', () => {
+      const middleware = toisuBody.any('options');
 
       middleware.call('the-context', 'req', 'res');
 
