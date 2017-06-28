@@ -54,15 +54,6 @@ tape('toisuBody', function (t) {
       t.end();
       reset();
     });
-
-    t.test('returns the return value of parseGeneric', function (t) {
-      var middleware = toisuBody.text('options');
-      var returnValue = middleware.call('the-context', 'req', 'res');
-
-      t.equal(returnValue, 'parse-generic-return-value');
-      t.end();
-      reset();
-    });
   });
 
   t.test('the json method', function (t) {
@@ -78,15 +69,6 @@ tape('toisuBody', function (t) {
 
       t.equal(parseGenericStub.callCount, 1, 'calls parseGeneric once');
       t.deepEqual(parseGenericStub.args[0], ['req', 'res', 'options', 'json-body', 'the-context']);
-      t.end();
-      reset();
-    });
-
-    t.test('returns the return value of parseGeneric', function (t) {
-      var middleware = toisuBody.json('options');
-      var returnValue = middleware.call('the-context', 'req', 'res');
-
-      t.equal(returnValue, 'parse-generic-return-value');
       t.end();
       reset();
     });
@@ -108,15 +90,6 @@ tape('toisuBody', function (t) {
       t.end();
       reset();
     });
-
-    t.test('returns the return value of parseGeneric', function (t) {
-      var middleware = toisuBody.form('options');
-      var returnValue = middleware.call('the-context', 'req', 'res');
-
-      t.equal(returnValue, 'parse-generic-return-value');
-      t.end();
-      reset();
-    });
   });
 
   t.test('the any method', function (t) {
@@ -132,15 +105,6 @@ tape('toisuBody', function (t) {
 
       t.equal(parseGenericStub.callCount, 1, 'calls parseGeneric once');
       t.deepEqual(parseGenericStub.args[0], ['req', 'res', 'options', 'any-body', 'the-context']);
-      t.end();
-      reset();
-    });
-
-    t.test('returns the return value of parseGeneric', function (t) {
-      var middleware = toisuBody.any('options');
-      var returnValue = middleware.call('the-context', 'req', 'res');
-
-      t.equal(returnValue, 'parse-generic-return-value');
       t.end();
       reset();
     });
