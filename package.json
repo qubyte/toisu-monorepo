@@ -9,9 +9,6 @@
     "test-node": "mocha --recursive",
     "test": "npm run lint && npm run test-node"
   },
-  "engines": {
-    "node": ">=7.2"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/qubyte/toisu-body.git"
