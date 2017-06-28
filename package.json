@@ -6,10 +6,11 @@
   "scripts": {
     "clean": "rimraf coverage",
     "lint": "eslint .",
-    "test-node": "tape 'test/**/*.js'",
-    "cover": "istanbul cover tape 'test/**/*.js'",
-    "check-coverage": "istanbul check-coverage --statements 100 --functions 100 --branches 100 --lines 100",
-    "test": "npm run clean && npm run lint && npm run cover && npm run check-coverage && npm run clean"
+    "test-node": "mocha --recursive",
+    "test": "npm run lint && npm run test-node"
+  },
+  "engines": {
+    "node": ">=7.2"
   },
   "repository": {
     "type": "git",
@@ -32,13 +33,13 @@
     "body": "^5.1.0"
   },
   "devDependencies": {
-    "eslint": "3.4.0",
-    "eslint-config-qubyte": "1.0.1",
-    "istanbul": "0.4.1",
-    "rimraf": "2.4.4",
+    "eslint": "4.1.1",
+    "eslint-config-qubyte": "1.1.0",
+    "istanbul": "0.4.5",
+    "mocha": "3.4.2",
+    "rimraf": "2.6.1",
     "sandboxed-module": "2.0.3",
-    "sinon": "1.17.2",
-    "tape": "4.2.2"
+    "sinon": "2.3.5"
   },
   "files": [
     "index.js",
