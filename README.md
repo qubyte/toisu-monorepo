@@ -1,5 +1,7 @@
 # toisu-handlebars
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/qubyte/toisu-handlebars.svg)](https://greenkeeper.io/)
+
 toisu-handlebars is a handlebars wrapper for the TOISU! server micro-framework.
 
 ## install
