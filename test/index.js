@@ -35,7 +35,7 @@ describe('toisu-middleware-runner', () => {
     assert.equal(middlewares[0].callCount, 1);
     assert.equal(middlewares[1].callCount, 0);
 
-    await deferreds[0].resolve();
+    await deferreds[0].resolve().then();
 
     assert.equal(middlewares[1].callCount, 1);
   });
