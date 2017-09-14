@@ -1,5 +1,7 @@
 # toisu-static
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/qubyte/toisu-static.svg)](https://greenkeeper.io/)
+
 A tiny wrapper around serve-static for Toisu!
 
 This module accepts the same arguments as
