@@ -1,5 +1,7 @@
 # toisu-body
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/qubyte/toisu-body.svg)](https://greenkeeper.io/)
+
 Body parsing middleware for Toisu!
 
 This module is a thin wrapper around the excellent
