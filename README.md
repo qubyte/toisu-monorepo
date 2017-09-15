@@ -1,5 +1,7 @@
 # Toisu! router
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/qubyte/toisu-router.svg)](https://greenkeeper.io/)
+
 The Toisu! router provides routing logic, using routing string like those of Express.
 
 ## Usage
