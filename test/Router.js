@@ -5,16 +5,18 @@ const SandboxedModule = require('sandboxed-module');
 const sinon = require('sinon');
 
 describe('Router', () => {
-  const sandbox = sinon.sandbox.create();
-  const RouteStub = sandbox.stub();
-  const makeMiddlewareStub = sandbox.stub();
+  let RouteStub;
+  let makeMiddlewareStub;
   const route0 = {};
   const route1 = {};
   const route2 = {};
 
   let Router;
 
-  before(() => {
+  beforeEach(() => {
+    RouteStub = sinon.stub();
+    makeMiddlewareStub = sinon.stub();
+
     RouteStub.onCall(0).returns(route0);
     RouteStub.onCall(1).returns(route1);
     RouteStub.onCall(2).returns(route2);
@@ -25,10 +27,6 @@ describe('Router', () => {
         './makeMiddleware': makeMiddlewareStub.returns('middleware')
       }
     });
-  });
-
-  afterEach(() => {
-    sandbox.reset();
   });
 
   it('constructs instances of itself', () => {
