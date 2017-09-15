@@ -1,5 +1,7 @@
 # Toisu! middleware runner
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/qubyte/toisu-middleware-runner.svg)](https://greenkeeper.io/)
+
 For Node.js versions less than 7.6 please use the 1.x line of releases.
 
 Toisu! runs middlewares in sequence, waiting for promises from middlwares to resolve (when promises
