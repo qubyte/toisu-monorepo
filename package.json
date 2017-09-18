@@ -30,7 +30,7 @@
     "istanbul": "0.4.5",
     "rimraf": "2.6.2",
     "sandboxed-module": "2.0.3",
-    "sinon": "3.2.1",
+    "sinon": "3.3.0",
     "tape": "4.8.0"
   },
   "dependencies": {
