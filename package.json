@@ -33,13 +33,13 @@
     "body": "^5.1.0"
   },
   "devDependencies": {
-    "eslint": "4.7.1",
-    "eslint-config-qubyte": "1.1.0",
-    "istanbul": "0.4.5",
-    "mocha": "3.5.3",
-    "rimraf": "2.6.2",
-    "sandboxed-module": "2.0.3",
-    "sinon": "3.3.0"
+    "eslint": "~4.7.2",
+    "eslint-config-qubyte": "~1.1.0",
+    "istanbul": "~0.4.5",
+    "mocha": "~3.5.3",
+    "rimraf": "~2.6.2",
+    "sandboxed-module": "~2.0.3",
+    "sinon": "~3.3.0"
   },
   "files": [
     "index.js",
