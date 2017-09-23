@@ -1,6 +1,6 @@
 {
   "name": "toisu-body",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Body parsing middleware for Toisu!",
   "main": "index.js",
   "scripts": {
