@@ -23,7 +23,7 @@
     "es2015-deferred": "^3.0.0",
     "eslint": "^4.6.1",
     "eslint-config-qubyte": "^1.1.0",
-    "mocha": "^3.2.0",
+    "mocha": "^4.0.0",
     "sinon": "^4.0.0"
   }
 }
