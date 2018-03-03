@@ -1,8 +1,8 @@
 'use strict';
 
-var tape = require('tape');
-var sinon = require('sinon');
-var SandboxedModule = require('sandboxed-module');
+const assert = require('assert');
+const sinon = require('sinon');
+const SandboxedModule = require('sandboxed-module');
 
 SandboxedModule.registerBuiltInSourceTransformer('istanbul');
 
@@ -12,98 +12,84 @@ function requireModule(serveStaticStub) {
       'serve-static': serveStaticStub
     },
     globals: {
-      Promise: Promise
+      Promise
     }
   });
 }
 
-tape('toisu-static', function (t) {
-  t.test('is a function', function (t) {
-    t.equal(typeof requireModule(), 'function', 'is a function');
-    t.end();
+describe('toisu-static', () => {
+  it('is a function', () => {
+    assert.equal(typeof requireModule(), 'function');
   });
 
-  t.test('calls serve-static with the given root and options', function (t) {
-    var serveStaticStub = sinon.stub();
-    var toisuStatic = requireModule(serveStaticStub);
+  it('calls serve-static with the given root and options', () => {
+    const serveStaticStub = sinon.stub();
+    const toisuStatic = requireModule(serveStaticStub);
+
     toisuStatic('root', 'options');
 
-    t.equal(serveStaticStub.callCount, 1);
-    t.deepEqual(serveStaticStub.args[0], ['root', 'options'], 'is passed root and options');
-    t.end();
+    assert.equal(serveStaticStub.callCount, 1);
+    assert.deepEqual(serveStaticStub.args[0], ['root', 'options'], 'is passed root and options');
   });
 
-  t.test('returns a middleware function', function (t) {
-    var serveStaticStub = sinon.stub();
-    var toisuStatic = requireModule(serveStaticStub);
+  it('returns a middleware function', () => {
+    const serveStaticStub = sinon.stub();
+    const toisuStatic = requireModule(serveStaticStub);
 
-    t.equal(typeof toisuStatic(), 'function', 'is a function');
-    t.end();
+    assert.equal(typeof toisuStatic(), 'function', 'is a function');
   });
 
-  t.test('it returns a promise when the middleware is called', function (t) {
-    var serveStaticStub = sinon.stub();
-    var toisuStatic = requireModule(serveStaticStub);
-    var middleware = toisuStatic();
-    var promise = middleware('req', 'res');
+  it('returns a promise when the middleware is called', () => {
+    const serveStaticStub = sinon.stub().returns(() => {});
+    const toisuStatic = requireModule(serveStaticStub);
+    const middleware = toisuStatic();
+    const promise = middleware('req', 'res');
 
-    t.ok(promise instanceof Promise, 'is a promise');
-    t.end();
+    assert.ok(promise instanceof Promise, 'is a promise');
   });
 
-  t.test('it passes the request, response, and a callback to the internal private serve function', function (t) {
-    var privateServeStub = sinon.stub();
-    var serveStaticStub = sinon.stub().returns(privateServeStub);
-    var toisuStatic = requireModule(serveStaticStub);
-    var middleware = toisuStatic();
+  it('passes the request, response, and a callback to the internal private serve function', () => {
+    const privateServeStub = sinon.stub();
+    const serveStaticStub = sinon.stub().returns(privateServeStub);
+    const toisuStatic = requireModule(serveStaticStub);
+    const middleware = toisuStatic();
 
     middleware('req', 'res');
 
-    t.equal(privateServeStub.callCount, 1, 'called once');
-    t.deepEqual(privateServeStub.args[0][0], 'req', 'passed request');
-    t.deepEqual(privateServeStub.args[0][1], 'res', 'passed response');
-    t.deepEqual(typeof privateServeStub.args[0][2], 'function', 'passed callback');
-    t.end();
+    assert.equal(privateServeStub.callCount, 1, 'called once');
+    assert.deepEqual(privateServeStub.args[0][0], 'req', 'passed request');
+    assert.deepEqual(privateServeStub.args[0][1], 'res', 'passed response');
+    assert.deepEqual(typeof privateServeStub.args[0][2], 'function', 'passed callback');
   });
 
-  t.test('it rejects the middleware promise when the private serve function calls back with an error', function (t) {
-    var privateServeStub = sinon.stub();
-    var serveStaticStub = sinon.stub().returns(privateServeStub);
-    var toisuStatic = requireModule(serveStaticStub);
-    var middleware = toisuStatic();
+  it('rejects the middleware promise when the private serve function calls back with an error', async () => {
+    const privateServeStub = sinon.stub();
+    const serveStaticStub = sinon.stub().returns(privateServeStub);
+    const toisuStatic = requireModule(serveStaticStub);
+    const middleware = toisuStatic();
 
-    var promise = middleware('req', 'res');
+    const promise = middleware('req', 'res');
     privateServeStub.yield('an error');
 
-    promise.then(
-      function () {
-        t.fail('promise resolved');
-        t.end();
-      },
-      function (e) {
-        t.equal(e, 'an error', 'rejects with the error from the private serve callback');
-        t.end();
-      }
-    );
+    try {
+      await promise;
+    } catch (e) {
+      assert.equal(e, 'an error', 'rejects with the error from the private serve callback');
+      return;
+    }
+
+    throw new Error('Promise should not resolve.');
   });
 
-  t.test('it resolves the middleware promise when the private serve function calls back without an error', function (t) {
-    var privateServeStub = sinon.stub();
-    var serveStaticStub = sinon.stub().returns(privateServeStub);
-    var toisuStatic = requireModule(serveStaticStub);
-    var middleware = toisuStatic();
+  it('resolves the middleware promise when the private serve function calls back without an error', () => {
+    const privateServeStub = sinon.stub();
+    const serveStaticStub = sinon.stub().returns(privateServeStub);
+    const toisuStatic = requireModule(serveStaticStub);
+    const middleware = toisuStatic();
 
-    var promise = middleware('req', 'res');
+    const promise = middleware('req', 'res');
     privateServeStub.yield();
 
-    promise.then(
-      function () {
-        t.end();
-      },
-      function () {
-        t.fail('promise rejected');
-        t.end();
-      }
-    );
+    return promise;
   });
 });
