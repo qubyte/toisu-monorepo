@@ -39,7 +39,7 @@
     "mocha": "~5.2.0",
     "rimraf": "~2.6.2",
     "sandboxed-module": "~2.0.3",
-    "sinon": "~5.0.0"
+    "sinon": "~5.1.0"
   },
   "files": [
     "index.js",
