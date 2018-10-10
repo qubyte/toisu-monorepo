@@ -6,7 +6,7 @@ const Deferred = require('es2015-deferred');
 const runner = require('../');
 
 describe('toisu-middleware-runner', () => {
-  const sandbox = sinon.sandbox.create();
+  const sandbox = sinon.createSandbox();
 
   let req;
   let res;
