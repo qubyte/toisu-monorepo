@@ -35,7 +35,7 @@
     "node-fetch": "^2.0.0",
     "rimraf": "~2.6.2",
     "sandboxed-module": "^2.0.3",
-    "sinon": "^6.0.0",
+    "sinon": "^7.2.4",
     "toisu": "^3.0.5"
   },
   "dependencies": {
