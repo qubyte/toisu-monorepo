@@ -28,7 +28,7 @@
     "node": ">=6"
   },
   "devDependencies": {
-    "eslint": "~5.14.0",
+    "eslint": "~5.15.0",
     "eslint-config-qubyte": "~2.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^6.0.0",
