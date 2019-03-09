@@ -24,7 +24,7 @@
     "mocha": "~6.0.0",
     "sandboxed-module": "~2.0.3",
     "sinon": "~7.2.4",
-    "supertest": "~3.4.0",
+    "supertest": "~4.0.0",
     "toisu": "~3.0.3"
   },
   "dependencies": {
