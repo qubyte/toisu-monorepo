@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "path-to-regexp": "3.0.0",
-    "toisu-middleware-runner": "2.0.0"
+    "toisu-middleware-runner": "2.0.1"
   },
   "engines": {
     "node": ">=4.2"
