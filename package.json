@@ -21,7 +21,7 @@
     "eslint-config-qubyte": "~2.0.0",
     "mocha": "~6.0.0",
     "sandboxed-module": "~2.0.3",
-    "sinon": "~7.2.4"
+    "sinon": "~7.3.0"
   },
   "files": [
     "index.js"
