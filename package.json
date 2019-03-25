@@ -4,7 +4,8 @@
   "description": "The core middleware runner for Toisu!",
   "main": "index.js",
   "scripts": {
-    "test": "eslint . && mocha"
+    "test": "mocha",
+    "lint": "eslint ."
   },
   "engines": {
     "node": ">=7.6"
