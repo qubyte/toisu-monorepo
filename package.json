@@ -4,10 +4,8 @@
   "description": "Body parsing middleware for Toisu!",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf coverage",
     "lint": "eslint .",
-    "test-node": "mocha --recursive",
-    "test": "npm run lint && npm run test-node"
+    "test": "mocha --recursive"
   },
   "engines": {
     "node": ">=6"
@@ -35,9 +33,7 @@
   "devDependencies": {
     "eslint": "~5.15.0",
     "eslint-config-qubyte": "~2.0.0",
-    "istanbul": "~0.4.5",
     "mocha": "~6.0.0",
-    "rimraf": "~2.6.2",
     "sandboxed-module": "~2.0.3",
     "sinon": "~7.3.0"
   },
