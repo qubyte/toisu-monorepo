@@ -4,7 +4,8 @@
   "description": "A lightweight handlebars wrapper for Toisu.",
   "main": "index.js",
   "scripts": {
-    "test": "eslint . && mocha test"
+    "test": "mocha test",
+    "lint": "eslint ."
   },
   "keywords": [
     "toisu",
