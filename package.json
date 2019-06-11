@@ -4,14 +4,8 @@
   "description": "A simple wrapper around serve-static for Toisu!",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf coverage",
     "lint": "eslint .",
-    "test-node": "mocha test/**/*.js",
-    "cover": "istanbul cover _mocha test/**/*.js",
-    "check-coverage": "istanbul check-coverage --statements 100 --functions 100 --branches 100 --lines 100",
-    "pretest": "npm run clean",
-    "test": "npm run lint && npm run cover && npm run check-coverage",
-    "posttest": "npm run clean"
+    "test": "mocha test/**/*.js"
   },
   "repository": "github:qubyte/toisu-static",
   "keywords": [
@@ -28,17 +22,16 @@
     "node": ">=6"
   },
   "devDependencies": {
-    "eslint": "~5.16.0",
+    "eslint": "^5.16.0",
     "eslint-config-qubyte": "~2.0.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^6.0.2",
-    "node-fetch": "^2.0.0",
+    "mocha": "^6.1.4",
+    "node-fetch": "^2.6.0",
     "rimraf": "~2.6.2",
     "sandboxed-module": "^2.0.3",
-    "sinon": "^7.2.4",
+    "sinon": "^7.3.2",
     "toisu": "^3.0.5"
   },
   "dependencies": {
-    "serve-static": "~1.14.0"
+    "serve-static": "^1.14.1"
   }
 }
