@@ -15,14 +15,14 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "dependencies": {
-    "handlebars": "4.1.1"
+    "handlebars": "^4.1.2"
   },
   "devDependencies": {
-    "eslint": "^5.0.0",
+    "eslint": "^5.16.0",
     "eslint-config-qubyte": "~2.0.0",
-    "mocha": "~6.1.0",
+    "mocha": "^6.1.4",
     "sandboxed-module": "~2.0.3",
-    "sinon": "~7.3.0"
+    "sinon": "^7.3.2"
   },
   "files": [
     "index.js"
