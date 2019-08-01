@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "eslint": "^6.0.0",
-    "eslint-config-qubyte": "~2.0.0",
+    "eslint-config-qubyte": "~3.0.0",
     "mocha": "^6.1.4",
     "node-fetch": "^2.6.0",
     "rimraf": "~2.6.2",
