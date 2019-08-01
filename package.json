@@ -20,7 +20,7 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "devDependencies": {
-    "eslint-config-qubyte": "~2.0.0",
+    "eslint-config-qubyte": "~3.0.0",
     "eslint": "~6.1.0",
     "mocha": "~6.2.0",
     "sandboxed-module": "~2.0.3",
