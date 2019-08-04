@@ -24,7 +24,7 @@
     "eslint": "~6.1.0",
     "mocha": "~6.2.0",
     "sandboxed-module": "~2.0.3",
-    "sinon": "~7.3.0",
+    "sinon": "~7.4.0",
     "supertest": "~4.0.0",
     "toisu": "~3.0.3"
   },
