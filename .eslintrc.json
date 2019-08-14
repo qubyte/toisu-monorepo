@@ -5,6 +5,7 @@
   "extends": "qubyte/ES2015",
   "rules": {
     "no-invalid-this": "off",
+    "no-void": "off",
     "max-params": ["error", 5]
   }
 }
