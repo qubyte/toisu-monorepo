@@ -33,6 +33,6 @@
     "toisu-middleware-runner": "2.0.1"
   },
   "engines": {
-    "node": ">=4.2"
+    "node": ">=8"
   }
 }
