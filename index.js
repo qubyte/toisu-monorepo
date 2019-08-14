@@ -1,14 +1,15 @@
 'use strict';
 
-const textBody = require('body');
-const jsonBody = require('body/json');
-const formBody = require('body/form');
-const anyBody = require('body/any');
-const parseGeneric = require('./lib/parseGeneric');
+const { promisify } = require('util');
+const textBody = promisify(require('body'));
+const jsonBody = promisify(require('body/json'));
+const formBody = promisify(require('body/form'));
+const anyBody = promisify(require('body/any'));
 
 function makeMiddleware(parser) {
   return options => function (req, res) {
-    return parseGeneric(req, res, options, parser, this);
+    return parser(req, res, options)
+      .then(body => void this.set('body', body));
   };
 }
 

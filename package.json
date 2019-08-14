@@ -8,7 +8,7 @@
     "test": "mocha --recursive"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "repository": {
     "type": "git",
@@ -34,8 +34,8 @@
     "eslint": "~6.1.0",
     "eslint-config-qubyte": "~3.0.0",
     "mocha": "~6.2.0",
-    "sandboxed-module": "~2.0.3",
-    "sinon": "^7.3.2"
+    "supertest": "^4.0.2",
+    "toisu": "^3.0.6"
   },
   "files": [
     "index.js",

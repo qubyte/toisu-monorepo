@@ -1,25 +1,11 @@
 'use strict';
 
 const assert = require('assert');
-const sinon = require('sinon');
-const SandboxedModule = require('sandboxed-module');
-
-const parseGenericStub = sinon.stub().returns('parse-generic-return-value');
-const toisuBody = SandboxedModule.require('../', {
-  requires: {
-    './lib/parseGeneric': parseGenericStub,
-    body: 'text-body',
-    'body/json': 'json-body',
-    'body/form': 'form-body',
-    'body/any': 'any-body'
-  }
-});
+const Toisu = require('toisu');
+const toisuBody = require('../');
+const supertest = require('supertest');
 
 describe('toisuBody', () => {
-  afterEach(() => {
-    parseGenericStub.reset();
-  });
-
   it('is an object', () => {
     assert.equal(typeof toisuBody, 'object', 'is an object');
     assert.ok(toisuBody, 'is not null');
@@ -38,13 +24,22 @@ describe('toisuBody', () => {
       assert.equal(typeof toisuBody.text('options'), 'function', 'is a function');
     });
 
-    it('the returned function passes req, res, options, the textBody function and the context', () => {
-      const middleware = toisuBody.text('options');
+    it('uses the text parser', () => {
+      const app = new Toisu()
+        .use(toisuBody.text({}))
+        .use(function (_req, res) {
+          res.writeHead(200, { 'Content-Type': 'text/plain' });
+          res.end(this.get('body'));
+        });
 
-      middleware.call('the-context', 'req', 'res');
+      const server = supertest(app.requestHandler);
 
-      assert.equal(parseGenericStub.callCount, 1, 'calls parseGeneric once');
-      assert.deepEqual(parseGenericStub.args[0], ['req', 'res', 'options', 'text-body', 'the-context']);
+      return server
+        .post('/')
+        .send('This is some text.')
+        .expect(200)
+        .expect('Content-Type', 'text/plain')
+        .expect('This is some text.');
     });
   });
 
@@ -53,13 +48,21 @@ describe('toisuBody', () => {
       assert.equal(typeof toisuBody.json('options'), 'function', 'is a function');
     });
 
-    it('the returned function passes req, res, options, the jsonBody function and the context to parseGeneric', () => {
-      const middleware = toisuBody.json('options');
+    it('uses the json parser', () => {
+      const app = new Toisu()
+        .use(toisuBody.json({}))
+        .use(function (_req, res) {
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify(this.get('body')));
+        });
 
-      middleware.call('the-context', 'req', 'res');
+      const server = supertest(app.requestHandler);
 
-      assert.equal(parseGenericStub.callCount, 1, 'calls parseGeneric once');
-      assert.deepEqual(parseGenericStub.args[0], ['req', 'res', 'options', 'json-body', 'the-context']);
+      return server
+        .post('/')
+        .send('{"some":"json"}')
+        .expect('Content-Type', 'application/json')
+        .expect(200, { some: 'json' });
     });
   });
 
@@ -68,13 +71,21 @@ describe('toisuBody', () => {
       assert.equal(typeof toisuBody.form('options'), 'function', 'is a function');
     });
 
-    it('the returned function passes req, res, options, the formBody function and the context to parseGeneric', () => {
-      const middleware = toisuBody.form('options');
+    it('uses the form parser', () => {
+      const app = new Toisu()
+        .use(toisuBody.form({}))
+        .use(function (_req, res) {
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify(this.get('body')));
+        });
 
-      middleware.call('the-context', 'req', 'res');
+      const server = supertest(app.requestHandler);
 
-      assert.equal(parseGenericStub.callCount, 1, 'calls parseGeneric once');
-      assert.deepEqual(parseGenericStub.args[0], ['req', 'res', 'options', 'form-body', 'the-context']);
+      return server
+        .post('/')
+        .send('this=is&a=form')
+        .expect('Content-Type', 'application/json')
+        .expect(200, { this: 'is', a: 'form' });
     });
   });
 
@@ -83,13 +94,38 @@ describe('toisuBody', () => {
       assert.equal(typeof toisuBody.any('options'), 'function', 'is a function');
     });
 
-    it('the returned function passes req, res, options, the anyBody function and the context to parseGeneric', () => {
-      const middleware = toisuBody.any('options');
+    it('uses the json parser for json', () => {
+      const app = new Toisu()
+        .use(toisuBody.any({}))
+        .use(function (_req, res) {
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify(this.get('body')));
+        });
 
-      middleware.call('the-context', 'req', 'res');
+      const server = supertest(app.requestHandler);
 
-      assert.equal(parseGenericStub.callCount, 1, 'calls parseGeneric once');
-      assert.deepEqual(parseGenericStub.args[0], ['req', 'res', 'options', 'any-body', 'the-context']);
+      return server
+        .post('/')
+        .send({ some: 'json' })
+        .expect('Content-Type', 'application/json')
+        .expect(200, { some: 'json' });
+    });
+
+    it('uses the form parser for form-encoded bodies', () => {
+      const app = new Toisu()
+        .use(toisuBody.any({}))
+        .use(function (_req, res) {
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify(this.get('body')));
+        });
+
+      const server = supertest(app.requestHandler);
+
+      return server
+        .post('/')
+        .send('this=is&a=form')
+        .expect('Content-Type', 'application/json')
+        .expect(200, { this: 'is', a: 'form' });
     });
   });
 });
