@@ -7,7 +7,7 @@ const Toisu = require('toisu');
 const Router = require('../');
 
 describe('an app with a router', () => {
-  const sandbox = sinon.sandbox.create();
+  const sandbox = sinon.createSandbox();
 
   let app;
   let getStubs;

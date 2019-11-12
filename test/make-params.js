@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const makeParams = require('../lib/makeParams');
+const makeParams = require('../lib/make-params');
 
 describe('makeParams', () => {
   let params;

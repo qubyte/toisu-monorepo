@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const normalizeHandlers = require('../lib/normalizeHandlers');
+const normalizeHandlers = require('../lib/normalize-handlers');
 
 describe('normalizeHandlers', () => {
   it('is a function', () => {

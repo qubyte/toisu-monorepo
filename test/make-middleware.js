@@ -5,7 +5,7 @@ const sinon = require('sinon');
 const SandboxedModule = require('sandboxed-module');
 
 describe('makeMiddleware', () => {
-  const sandbox = sinon.sandbox.create();
+  const sandbox = sinon.createSandbox();
   const runnerStub = sandbox.stub();
 
   let makeMiddleware;
@@ -13,7 +13,7 @@ describe('makeMiddleware', () => {
   let routes;
 
   before(() => {
-    makeMiddleware = SandboxedModule.require('../lib/makeMiddleware', {
+    makeMiddleware = SandboxedModule.require('../lib/make-middleware', {
       requires: {
         'toisu-middleware-runner': runnerStub
       }

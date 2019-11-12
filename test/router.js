@@ -21,10 +21,10 @@ describe('Router', () => {
     RouteStub.onCall(1).returns(route1);
     RouteStub.onCall(2).returns(route2);
 
-    Router = SandboxedModule.require('../lib/Router', {
+    Router = SandboxedModule.require('../lib/router', {
       requires: {
-        './Route': RouteStub,
-        './makeMiddleware': makeMiddlewareStub.returns('middleware')
+        './route': RouteStub,
+        './make-middleware': makeMiddlewareStub.returns('middleware')
       }
     });
   });

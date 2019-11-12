@@ -3,18 +3,18 @@
 const assert = require('assert');
 const sinon = require('sinon');
 const SandboxedModule = require('sandboxed-module');
-const pathToRegexp = require('path-to-regexp');
+const { pathToRegexp } = require('path-to-regexp');
 
 describe('Route', () => {
-  const sandbox = sinon.sandbox.create();
+  const sandbox = sinon.createSandbox();
   const pathToRegexpSpy = sandbox.spy(pathToRegexp);
 
   let Route;
 
   before(() => {
-    Route = SandboxedModule.require('../lib/Route', {
+    Route = SandboxedModule.require('../lib/route', {
       requires: {
-        'path-to-regexp': pathToRegexpSpy
+        'path-to-regexp': { pathToRegexp: pathToRegexpSpy }
       }
     });
   });
