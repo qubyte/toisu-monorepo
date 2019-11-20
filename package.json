@@ -29,7 +29,7 @@
     "toisu": "~3.0.3"
   },
   "dependencies": {
-    "path-to-regexp": "6.0.0",
+    "path-to-regexp": "6.1.0",
     "toisu-middleware-runner": "2.0.1"
   },
   "engines": {
