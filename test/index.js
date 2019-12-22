@@ -5,7 +5,7 @@ var sinon = require('sinon');
 var SandboxedModule = require('sandboxed-module');
 
 describe('toisu-handlebars', function () {
-  var sandbox = sinon.sandbox.create();
+  var sandbox = sinon.createSandbox();
 
   var toisuHandlebars;
   var compileStub;
