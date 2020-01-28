@@ -22,7 +22,7 @@
     "node": ">=6"
   },
   "devDependencies": {
-    "eslint": "^6.1.0",
+    "eslint": "^6.6.0",
     "eslint-config-qubyte": "~3.0.0",
     "mocha": "^7.0.1",
     "node-fetch": "^2.6.0",
