@@ -15,7 +15,7 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "dependencies": {
-    "handlebars": "^4.7.4"
+    "handlebars": "^4.7.5"
   },
   "devDependencies": {
     "eslint": "^6.5.1",
