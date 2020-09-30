@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/qubyte/toisu-static#readme",
   "engines": {
-    "node": ">=6"
+    "node": ">=10"
   },
   "devDependencies": {
     "eslint": "^7.10.0",
