@@ -1,5 +1,10 @@
 # History
 
+## v5.0.0
+
+Minimum supported version of Node.js is now 10.
+Bumps path-to-regexp to v6.2.0.
+
 ## v4.1.0
 
 Bumps path-to-regexp to v2.1.0.
