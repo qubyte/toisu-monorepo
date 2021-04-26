@@ -2,13 +2,14 @@
   "name": "toisu-middleware-runner",
   "version": "2.0.1",
   "description": "The core middleware runner for Toisu!",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
     "lint": "eslint ."
   },
   "engines": {
-    "node": ">=7.6"
+    "node": ">=14"
   },
   "keywords": [
     "toisu",
@@ -22,9 +23,9 @@
   "license": "MIT",
   "devDependencies": {
     "es2015-deferred": "^3.0.0",
-    "eslint": "^6.8.0",
-    "eslint-config-qubyte": "^3.0.0",
-    "mocha": "^7.1.1",
-    "sinon": "^9.0.2"
+    "eslint": "^7.25.0",
+    "eslint-config-qubyte": "^4.1.0",
+    "mocha": "^8.3.2",
+    "sinon": "^10.0.0"
   }
 }
