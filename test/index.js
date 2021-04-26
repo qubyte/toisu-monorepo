@@ -1,9 +1,7 @@
-'use strict';
-
-const assert = require('assert');
-const sinon = require('sinon');
-const Deferred = require('es2015-deferred');
-const runner = require('../');
+import { strict as assert } from 'assert';
+import sinon from 'sinon';
+import Deferred from 'es2015-deferred';
+import runner from '../index.js';
 
 describe('toisu-middleware-runner', () => {
   const sandbox = sinon.createSandbox();

@@ -1,13 +1,9 @@
-'use strict';
-
-async function runner(req, res, middlewares = []) {
+export default async function runner(req, res, middlewares = []) {
   for (const middleware of middlewares) {
-    if (res.headersSent || !res.writable) {
+    if (res.headersSent) {
       return;
     }
 
     await middleware.call(this, req, res);
   }
 }
-
-module.exports = runner;
