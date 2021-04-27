@@ -116,4 +116,13 @@ describe('toisu-middleware-runner', () => {
 
     throw new Error('Runner should reject.');
   });
+
+  it('does not attempt to continue a sequence of middlewares when the response is not writable', async () => {
+    middlewares[0].callsFake(() => (res.writable = false));
+
+    await runner(req, res, middlewares);
+
+    assert.ok(middlewares[0].calledOnce);
+    assert.ok(middlewares[1].notCalled);
+  });
 });
