@@ -1,8 +1,6 @@
 # Toisu! middleware runner
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/qubyte/toisu-middleware-runner.svg)](https://greenkeeper.io/)
-
-For Node.js versions less than 7.6 please use the 1.x line of releases.
+For Node.js versions less than 14 please use the 2.x line of releases.
 
 Toisu! runs middlewares in sequence, waiting for promises from middlwares to resolve (when promises
 are returned) before continuing to the next. This module contains a function which does this
@@ -17,7 +15,7 @@ a promise and will always resolve asynchronously.
 
 With plain old ES2015:
 ```javascript
-const runner = require('toisu-middleware-runner');
+import runner from 'toisu-middleware-runner';
 
 // context will be used as the `this` value for middlewares.
 runner.call(context, req, res, middlewares)
@@ -31,7 +29,7 @@ runner.call(context, req, res, middlewares)
 
 With async-await:
 ```javascript
-const runner = require('toisu-middleware-runner');
+import runner from 'toisu-middleware-runner';
 
 async function example() {
   try {
