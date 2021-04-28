@@ -1,5 +1,10 @@
 # History
 
+## v6.0.0
+
+Minimum supported version of Node.js is now 14. The pacakge has been moved to
+the toisu scope (it's now `@toisu/router`).
+
 ## v5.0.0
 
 Minimum supported version of Node.js is now 10.
