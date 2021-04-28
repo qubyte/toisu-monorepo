@@ -1,0 +1,30 @@
+{
+  "name": "toisu-handlebars",
+  "version": "2.2.0",
+  "description": "A lightweight handlebars wrapper for Toisu.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "toisu",
+    "handlebars",
+    "templates"
+  ],
+  "author": "Mark S. Everitt",
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "^4.7.6"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-qubyte": "~3.0.0",
+    "mocha": "^7.1.1",
+    "sandboxed-module": "^2.0.4",
+    "sinon": "^9.0.2"
+  },
+  "files": [
+    "index.js"
+  ]
+}
