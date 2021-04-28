@@ -28,9 +28,9 @@ import http from 'http';
 // http is a Node core module. The following modules need to be added to your
 // package.json file if you want to try out this example:
 // npm i -S toisu toisu-router toisu-body
-import Toisu from 'toisu';
-import Router from 'toisu-router';
-import body from 'toisu-body';
+import Toisu from '@toisu/toisu';
+import Router from '@toisu/router';
+import body from '@toisu/body';
 import { setTimeout as timeout } from 'timers/promises';
 
 // A middleware function to build some response data from. Uses data appended

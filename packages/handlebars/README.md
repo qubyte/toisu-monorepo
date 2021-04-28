@@ -14,15 +14,15 @@ npm install @toisu/handlebars
 
 ```javascript
 import http from 'http';
-import Toisu from 'toisu';
-import toisuHandlebars from 'toisu-handlebars';
-import dbModule from './a-bd-module';
+import Toisu from '@toisu/toisu';
+import toisuHandlebars from '@toisu/handlebars';
+import dbModule from './a-db-module';
 
 const template = `
   <!doctype html>
   <html>
-  <head><title>Hello, world!</title></head>
-  <body>{{bodyContent}}</body>
+    <head><title>Hello, world!</title></head>
+    <body>{{bodyContent}}</body>
   </html>
 `;
 
@@ -32,7 +32,7 @@ const app = new Toisu();
 app.use(async function () {
   const bodyContent = await dbModule.get();
 
-  this.set('templateData', {bodyContent});
+  this.set('templateData', { bodyContent });
 });
 
 // toisu handlebars compiles the template and returns a middleware function.

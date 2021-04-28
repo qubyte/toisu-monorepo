@@ -9,9 +9,9 @@ When adding routes, the options parameter is passed along to `path-to-regexp`. S
 what forms the strings can take (this should be familiar to express users).
 
 ```javascript
-const Toisu = require('toisu');
-const Router = require('toisu-router');
-const http = require('http');
+import Toisu from '@toisu/toisu';
+import Router from '@toisu/router';
+import http from 'http';
 
 const app = new Toisu();
 const router = new Router();

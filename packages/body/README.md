@@ -12,8 +12,8 @@ This server will send back JSON sent to it.
 
 ```javascript
 import http from 'http';
-import Toisu from 'toisu';
-import * as body from 'toisu-body';
+import Toisu from '@toisu/toisu';
+import * as body from '@toisu/body';
 
 const app = new Toisu();
 
@@ -49,8 +49,8 @@ I recommend the third solution, which looks like:
 
 ```javascript
 import http from 'http';
-import Toisu from 'toisu';
-import * as body from 'toisu-body';
+import Toisu from '@toisu/toisu';
+import * as body from '@toisu/body';
 
 const app = new Toisu();
 const json = body.json();
