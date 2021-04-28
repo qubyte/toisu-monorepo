@@ -1,5 +1,5 @@
 {
-  "name": "toisu-router",
+  "name": "@toisu/router",
   "version": "5.0.0",
   "description": "A routing middleware for Toisu!",
   "main": "index.js",
@@ -16,7 +16,7 @@
     "index.js",
     "lib"
   ],
-  "repository": "qubyte/toisu-router",
+  "repository": "github:qubyte/toisu-monorepo",
   "author": "Mark S. Everitt",
   "license": "MIT",
   "devDependencies": {
