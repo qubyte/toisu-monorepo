@@ -5,20 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha test",
-    "lint": "eslint ."
+    "test": "mocha test"
   },
   "files": [],
-  "repository": "qubyte/toisu",
-  "homepage": "https://github.com/qubyte/toisu",
+  "repository": "github:qubyte/toisu",
   "author": "Mark S. Everitt",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/qubyte/toisu/issues"
-  },
   "devDependencies": {
-    "eslint": "^7.25.0",
-    "eslint-config-qubyte": "^4.1.0",
     "mocha": "^8.3.2",
     "supertest": "^6.1.3"
   },
