@@ -1,0 +1,44 @@
+{
+  "name": "toisu-body",
+  "version": "2.0.3",
+  "description": "Body parsing middleware for Toisu!",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha --recursive"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qubyte/toisu-body.git"
+  },
+  "keywords": [
+    "toisu",
+    "body",
+    "parsing",
+    "form",
+    "json"
+  ],
+  "author": "Mark S. Everitt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qubyte/toisu-body/issues"
+  },
+  "homepage": "https://github.com/qubyte/toisu-body#readme",
+  "dependencies": {
+    "body": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "~6.8.0",
+    "eslint-config-qubyte": "~3.0.0",
+    "mocha": "^7.1.1",
+    "supertest": "^4.0.2",
+    "toisu": "^3.0.6"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ]
+}
