@@ -1,7 +1,5 @@
-'use strict';
-
-const assert = require('assert');
-const normalizeHandlers = require('../lib/normalize-handlers');
+import { strict as assert } from 'assert';
+import normalizeHandlers from '../lib/normalize-handlers.js';
 
 describe('normalizeHandlers', () => {
   it('is a function', () => {
@@ -11,32 +9,28 @@ describe('normalizeHandlers', () => {
   it('throws when called without an object', () => {
     assert.throws(
       () => normalizeHandlers(),
-      Error,
-      'Handlers must be an object with HTTP methods as keys.'
+      new Error('Handlers must be an object with HTTP methods as keys.')
     );
   });
 
   it('throws when called with an object with an unknown HTTP method as a key', () => {
     assert.throws(
       () => normalizeHandlers({ blah: [] }),
-      Error,
-      'Unknown method: blah'
+      new Error('Unknown method: blah')
     );
   });
 
   it('throws when called with an object with the same HTTP method twice', () => {
     assert.throws(
       () => normalizeHandlers({ get: [], GET: [] }),
-      Error,
-      'A method can only be used once: GET'
+      new Error('A method can only be used once: GET')
     );
   });
 
   it('throws when called with a callbacks list which is not an array', () => {
     assert.throws(
       () => normalizeHandlers({ get: 'blah' }),
-      Error,
-      'A method can only be used once: GET'
+      new Error('Middleware for a method must be in an array.')
     );
   });
 
@@ -47,9 +41,9 @@ describe('normalizeHandlers', () => {
     const normalized = normalizeHandlers(original);
 
     assert.notEqual(original, normalized);
-    assert.deepEqual(normalized, {
+    assert.deepEqual(normalized, Object.assign(Object.create(null), {
       GET: getHandlers,
       POST: postHandlers
-    });
+    }));
   });
 });

@@ -1,7 +1,5 @@
-'use strict';
-
-const assert = require('assert');
-const makeParams = require('../lib/make-params');
+import { strict as assert } from 'assert';
+import makeParams from '../lib/make-params.js';
 
 describe('makeParams', () => {
   let params;
@@ -30,9 +28,9 @@ describe('makeParams', () => {
   });
 
   it('returns an object with merged param definitions and param values', () => {
-    assert.deepEqual(params, {
+    assert.deepEqual(params, Object.assign(Object.create(null), {
       foo: 'abc',
       bar: 'def'
-    });
+    }));
   });
 });

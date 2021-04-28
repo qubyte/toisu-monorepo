@@ -2,8 +2,9 @@
 
 ## v6.0.0
 
-Minimum supported version of Node.js is now 14. The pacakge has been moved to
-the toisu scope (it's now `@toisu/router`).
+- This package has been moved to the toisu scope: `@toisu/router`
+- Minimum supported version of Node.js is now 14.
+- This package is now published as an ES module, and must be imported accordingly.
 
 ## v5.0.0
 

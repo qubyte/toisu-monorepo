@@ -1,8 +1,6 @@
-'use strict';
+import http from 'http';
 
-const http = require('http');
-
-function normalizeHandlers(handlers) {
+export default function normalizeHandlers(handlers) {
   const normalized = Object.create(null);
 
   if (!handlers) {
@@ -30,5 +28,3 @@ function normalizeHandlers(handlers) {
 
   return normalized;
 }
-
-module.exports = normalizeHandlers;

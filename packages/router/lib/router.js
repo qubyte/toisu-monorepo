@@ -1,11 +1,9 @@
-'use strict';
-
-const makeMiddleware = require('./make-middleware');
-const Route = require('./route');
+import makeMiddleware from './make-middleware.js';
+import Route from './route.js';
 
 const routes = new WeakMap();
 
-class Router {
+export default class Router {
   constructor() {
     routes.set(this, []);
   }
@@ -18,5 +16,3 @@ class Router {
     return makeMiddleware(routes.get(this));
   }
 }
-
-module.exports = Router;

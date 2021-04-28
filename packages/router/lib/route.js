@@ -1,9 +1,7 @@
-'use strict';
-
-const { pathToRegexp } = require('path-to-regexp');
-const normalizeHandlers = require('./normalize-handlers');
-const makeParams = require('./make-params');
-const url = require('url');
+import { pathToRegexp } from 'path-to-regexp';
+import normalizeHandlers from './normalize-handlers.js';
+import makeParams from './make-params.js';
+import url from 'url';
 
 function makeNotAllowed(allowedMethods) {
   return function notAllowed(req, res) {
@@ -12,7 +10,7 @@ function makeNotAllowed(allowedMethods) {
   };
 }
 
-class Route {
+export default class Route {
   constructor(path, preNormalizedHandlers, options) {
     this.handlers = normalizeHandlers(preNormalizedHandlers);
 
@@ -35,5 +33,3 @@ class Route {
     }
   }
 }
-
-module.exports = Route;

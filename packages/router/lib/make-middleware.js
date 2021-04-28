@@ -1,8 +1,6 @@
-'use strict';
+import runner from '@toisu/middleware-runner';
 
-const runner = require('toisu-middleware-runner');
-
-function makeMiddleware(routes) {
+export default function makeMiddleware(routes) {
   return function routerMiddleware(req, res) {
     for (let i = 0, len = routes.length; i < len; i++) {
       const result = routes[i].match(req);
@@ -15,5 +13,3 @@ function makeMiddleware(routes) {
     }
   };
 }
-
-module.exports = makeMiddleware;

@@ -3,6 +3,7 @@
   "version": "5.0.0",
   "description": "A routing middleware for Toisu!",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "mocha",
     "lint": "eslint ."
@@ -13,26 +14,22 @@
     "router"
   ],
   "files": [
-    "index.js",
     "lib"
   ],
+  "engines": {
+    "node": ">=14"
+  },
   "repository": "github:qubyte/toisu-monorepo",
   "author": "Mark S. Everitt",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^7.13.0",
-    "eslint-config-qubyte": "~3.0.0",
-    "mocha": "^8.2.1",
-    "sandboxed-module": "^2.0.4",
-    "sinon": "^9.2.1",
-    "supertest": "^6.0.1",
-    "toisu": "~3.0.3"
+    "@toisu/toisu": "^4.0.0",
+    "mocha": "^8.3.2",
+    "sinon": "^10.0.0",
+    "supertest": "^6.1.3"
   },
   "dependencies": {
-    "path-to-regexp": "^6.2.0",
-    "toisu-middleware-runner": "2.0.1"
-  },
-  "engines": {
-    "node": ">=10"
+    "@toisu/middleware-runner": "^3.0.2",
+    "path-to-regexp": "^6.2.0"
   }
 }

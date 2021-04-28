@@ -1,3 +1,3 @@
-'use strict';
+import Router from './lib/router.js';
 
-module.exports = require('./lib/router');
+export default Router;
