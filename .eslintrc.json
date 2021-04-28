@@ -1,0 +1,9 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": "qubyte/ES2018-module",
+  "rules": {
+    "no-invalid-this": "off"
+  }
+}
