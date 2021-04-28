@@ -1,9 +1,7 @@
-'use strict';
-
-const assert = require('assert');
-const Toisu = require('toisu');
-const toisuBody = require('../');
-const supertest = require('supertest');
+import { strict as assert } from 'assert';
+import Toisu from '@toisu/toisu';
+import supertest from 'supertest';
+import * as toisuBody from '../index.js';
 
 describe('toisuBody', () => {
   it('is an object', () => {

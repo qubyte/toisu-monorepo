@@ -1,19 +1,18 @@
-'use strict';
-
-const { promisify } = require('util');
-const textBody = promisify(require('body'));
-const jsonBody = promisify(require('body/json'));
-const formBody = promisify(require('body/form'));
-const anyBody = promisify(require('body/any'));
+import { promisify } from 'util';
+import textBody from 'body';
+import jsonBody from 'body/json.js';
+import formBody from 'body/form.js';
+import anyBody from 'body/any.js';
 
 function makeMiddleware(parser) {
-  return options => function (req, res) {
-    return parser(req, res, options)
-      .then(body => void this.set('body', body));
+  const wrapped = promisify(parser);
+
+  return options => async function (req, res) {
+    this.set('body', await wrapped(req, res, options));
   };
 }
 
-exports.text = makeMiddleware(textBody);
-exports.json = makeMiddleware(jsonBody);
-exports.form = makeMiddleware(formBody);
-exports.any = makeMiddleware(anyBody);
+export const text = makeMiddleware(textBody);
+export const json = makeMiddleware(jsonBody);
+export const form = makeMiddleware(formBody);
+export const any = makeMiddleware(anyBody);

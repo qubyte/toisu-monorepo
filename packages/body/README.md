@@ -1,7 +1,5 @@
 # toisu-body
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/qubyte/toisu-body.svg)](https://greenkeeper.io/)
-
 Body parsing middleware for Toisu!
 
 This module is a thin wrapper around the excellent
@@ -13,9 +11,9 @@ field to the context of your request-response chain.
 This server will send back JSON sent to it.
 
 ```javascript
-const http = require('http');
-const Toisu = require('toisu');
-const body = require('toisu-body');
+import http from 'http';
+import Toisu from 'toisu';
+import * as body from 'toisu-body';
 
 const app = new Toisu();
 
@@ -50,9 +48,9 @@ are a few solutions to this issue:
 I recommend the third solution, which looks like:
 
 ```javascript
-const http = require('http');
-const Toisu = require('toisu');
-const body = require('toisu-body');
+import http from 'http';
+import Toisu from 'toisu';
+import * as body from 'toisu-body';
 
 const app = new Toisu();
 const json = body.json();
