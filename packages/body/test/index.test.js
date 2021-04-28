@@ -3,7 +3,7 @@ import Toisu from '@toisu/toisu';
 import supertest from 'supertest';
 import * as toisuBody from '../index.js';
 
-describe('toisuBody', () => {
+describe('body', () => {
   it('is an object', () => {
     assert.equal(typeof toisuBody, 'object', 'is an object');
     assert.ok(toisuBody, 'is not null');

@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import Deferred from 'es2015-deferred';
 import runner from '../index.js';
 
-describe('toisu-middleware-runner', () => {
+describe('middleware-runner', () => {
   const sandbox = sinon.createSandbox();
 
   let req;

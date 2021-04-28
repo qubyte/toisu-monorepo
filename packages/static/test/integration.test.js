@@ -8,7 +8,7 @@ const readme = fs.readFileSync(new URL('../README.md', import.meta.url), 'utf8')
 
 assert.notEqual(readme.length, 0);
 
-describe('integration', () => {
+describe('static', () => {
   it('serves files', async () => {
     const app = new Toisu().use(serveStatic('.'));
     const res = await supertest(app.requestHandler).get('/README.md');

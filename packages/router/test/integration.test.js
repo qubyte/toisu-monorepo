@@ -4,7 +4,7 @@ import supertest from 'supertest';
 import Toisu from '@toisu/toisu';
 import Router from '../index.js';
 
-describe('an app with a router', () => {
+describe('router', () => {
   const sandbox = sinon.createSandbox();
 
   let app;
