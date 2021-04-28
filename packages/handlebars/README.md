@@ -1,24 +1,22 @@
 # toisu-handlebars
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/qubyte/toisu-handlebars.svg)](https://greenkeeper.io/)
-
-toisu-handlebars is a handlebars wrapper for the TOISU! server micro-framework.
+`@toisu/handlebars` is a handlebars wrapper for the TOISU! server micro-framework.
 
 ## install
 
 To install toisu-handlebars into your project, use:
 
 ```bash
-npm install --save toisu-handlebars
+npm install @toisu/handlebars
 ```
 
 ## usage
 
 ```javascript
-const http = require('http');
-const Toisu = require('toisu');
-const toisuHandlebars = require('toisu-handlebars');
-const dbModule = require('./a-bd-module');
+import http from 'http';
+import Toisu from 'toisu';
+import toisuHandlebars from 'toisu-handlebars';
+import dbModule from './a-bd-module';
 
 const template = `
   <!doctype html>
