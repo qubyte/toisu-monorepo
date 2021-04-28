@@ -1,0 +1,19 @@
+{
+  "name": "toisu-monorepo",
+  "version": "0.0.0",
+  "description": "This repository contains the core Toisu ecosystem.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "github:qubyte/toisu",
+  "author": "Mark S. Everitt",
+  "license": "MIT",
+  "dependencies": {
+    "lerna": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-qubyte": "^4.1.0"
+  }
+}
