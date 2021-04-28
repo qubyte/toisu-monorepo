@@ -1,5 +1,11 @@
 # History
 
+## v4.0.0
+
+- The minimum version of Node.js now supported is 14.
+- This package has been moved to the toisu scope: `@toisu/static`.
+- This package is now an ES module and must be imported accordingly.
+
 ## v3.0.0
 
 - The minimum version of Node.js now officially supported is 10.

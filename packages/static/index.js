@@ -1,8 +1,6 @@
-'use strict';
+import serveStatic from 'serve-static';
 
-const serveStatic = require('serve-static');
-
-function makeStaticMiddleware(root, options) {
+export default function makeStaticMiddleware(root, options) {
   const serve = serveStatic(root, options);
 
   return function staticMiddleware(req, res) {
@@ -11,5 +9,3 @@ function makeStaticMiddleware(root, options) {
     });
   };
 }
-
-module.exports = makeStaticMiddleware;

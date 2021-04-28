@@ -1,35 +1,28 @@
 {
-  "name": "toisu-static",
+  "name": "@toisu/static",
   "version": "3.0.0",
-  "description": "A simple wrapper around serve-static for Toisu!",
+  "description": "A wrapper around serve-static for Toisu!",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "lint": "eslint .",
-    "test": "mocha test/**/*.js"
+    "test": "mocha"
   },
-  "repository": "github:qubyte/toisu-static",
+  "repository": "github:qubyte/toisu-monorepo",
   "keywords": [
     "toisu",
     "static"
   ],
   "author": "Mark S. Everitt",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/qubyte/toisu-static/issues"
-  },
-  "homepage": "https://github.com/qubyte/toisu-static#readme",
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "devDependencies": {
-    "eslint": "^7.10.0",
-    "eslint-config-qubyte": "~3.0.0",
-    "mocha": "^8.1.3",
-    "node-fetch": "^2.6.1",
+    "@toisu/toisu": "^4.0.0",
+    "mocha": "^8.3.2",
     "rimraf": "^3.0.2",
-    "sandboxed-module": "^2.0.4",
-    "sinon": "^9.1.0",
-    "toisu": "^3.0.5"
+    "sinon": "^10.0.0",
+    "supertest": "^6.1.3"
   },
   "dependencies": {
     "serve-static": "^1.14.1"

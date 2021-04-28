@@ -1,7 +1,5 @@
 # toisu-static
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/qubyte/toisu-static.svg)](https://greenkeeper.io/)
-
 A tiny wrapper around serve-static for Toisu!
 
 This module accepts the same arguments as
@@ -10,9 +8,9 @@ This module accepts the same arguments as
 ## Example
 
 ```javascript
-const http = require('http');
-const Toisu = require('toisu');
-const serveStatic = require('toisu-static');
+import http from 'http';
+import Toisu from '@toisu/toisu';
+import serveStatic from '@toisu/static';
 
 const app = new Toisu();
 

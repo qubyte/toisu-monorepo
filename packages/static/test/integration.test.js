@@ -1,34 +1,38 @@
-'use strict';
+import fs from 'fs';
+import { strict as assert } from 'assert';
+import Toisu from '@toisu/toisu';
+import serveStatic from '../index.js';
+import supertest from 'supertest';
 
-const fs = require('fs');
-const assert = require('assert');
-const Toisu = require('toisu');
-const { createServer } = require('http');
-const serveStatic = require('..');
-const fetch = require('node-fetch');
-const { join } = require('path');
-const readme = fs.readFileSync(join(__dirname, '..', 'README.md'), 'utf8').trim();
+const readme = fs.readFileSync(new URL('../README.md', import.meta.url), 'utf8').trim();
+
+assert.notEqual(readme.length, 0);
 
 describe('integration', () => {
-  let server;
-
-  before(done => {
-    const app = new Toisu();
-
-    app.use(serveStatic('.'));
-
-    server = createServer(app.requestHandler, 3000).listen(3000, () => done());
-  });
-
-  after(() => {
-    server.close();
-  });
-
   it('serves files', async () => {
-    const res = await fetch('http://localhost:3000/README.md');
-    const text = await res.text();
+    const app = new Toisu().use(serveStatic('.'));
+    const res = await supertest(app.requestHandler).get('/README.md');
 
-    assert.ok(readme.length > 0);
-    assert.equal(readme.trim(), text.trim());
+    assert.equal(readme, res.text.trim());
+  });
+
+  it('falls through when configured to and no file is found', async () => {
+    const app = new Toisu()
+      .use(serveStatic('.', { fallthrough: true }))
+      .use((_req, res) => res.end('fallthrough'));
+
+    const res = await supertest(app.requestHandler).get('/blarg');
+
+    assert.equal(res.text, 'fallthrough');
+  });
+
+  it('does not fall through when not configured to', async () => {
+    const app = new Toisu()
+      .use(serveStatic('.', { fallthrough: false }))
+      .use((_req, res) => res.end('fallthrough'));
+
+    const res = await supertest(app.requestHandler).get('/blarg');
+
+    assert.equal(res.statusCode, 500);
   });
 });
