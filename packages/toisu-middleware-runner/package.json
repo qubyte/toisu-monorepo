@@ -1,0 +1,31 @@
+{
+  "name": "toisu-middleware-runner",
+  "version": "3.0.2",
+  "description": "The core middleware runner for Toisu!",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "keywords": [
+    "toisu",
+    "middleware"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "repository": "qubyte/toisu-middleware-runner",
+  "author": "Mark S. Everitt",
+  "license": "MIT",
+  "devDependencies": {
+    "es2015-deferred": "^3.0.0",
+    "eslint": "^7.25.0",
+    "eslint-config-qubyte": "^4.1.0",
+    "mocha": "^8.3.2",
+    "sinon": "^10.0.0"
+  }
+}
