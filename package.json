@@ -4,7 +4,9 @@
   "description": "This repository contains the core Toisu ecosystem.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "lerna bootstrap",
+    "test": "lerna run test",
+    "lint": "eslint ."
   },
   "repository": "github:qubyte/toisu",
   "author": "Mark S. Everitt",
