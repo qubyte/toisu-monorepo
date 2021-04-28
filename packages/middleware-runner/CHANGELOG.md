@@ -1,4 +1,4 @@
-## v3.0.0
+## v3.0.3
 
 - This module is now an ES module and must be imported accordingly.
 - This module has been moved to the toisu scope: `@toisu/middleware-runner`.

@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.0.0
+## 4.0.1
 
 - Lowest supported version of node is now 14.
 - This library is an ES module and must be imported accordingly.
