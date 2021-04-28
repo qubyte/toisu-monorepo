@@ -28,5 +28,8 @@
     "@toisu/toisu": "^4.0.0",
     "mocha": "^7.1.1",
     "supertest": "^4.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
