@@ -1,6 +1,6 @@
 {
   "name": "@toisu/body",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Body parsing middleware for Toisu!",
   "main": "index.js",
   "type": "module",
@@ -25,7 +25,7 @@
     "body": "^5.1.0"
   },
   "devDependencies": {
-    "@toisu/toisu": "^4.0.1",
+    "@toisu/toisu": "^4.0.2",
     "mocha": "^7.1.1",
     "supertest": "^4.0.2"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@toisu/handlebars",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A lightweight handlebars wrapper for Toisu.",
   "main": "index.js",
   "type": "module",
@@ -19,7 +19,7 @@
     "handlebars": "^4.7.7"
   },
   "devDependencies": {
-    "@toisu/toisu": "^4.0.1",
+    "@toisu/toisu": "^4.0.2",
     "mocha": "^8.3.2",
     "supertest": "^6.1.3"
   },
