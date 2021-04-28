@@ -1,6 +1,6 @@
 {
   "name": "@toisu/toisu",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Minimalist server framework inspired by Express and Koa, powered by promises. Ready for async-await.",
   "main": "index.js",
   "type": "module",
@@ -16,7 +16,7 @@
     "supertest": "^6.1.3"
   },
   "dependencies": {
-    "@toisu/middleware-runner": "^3.0.2"
+    "@toisu/middleware-runner": "^3.0.3"
   },
   "engines": {
     "node": ">=14"
