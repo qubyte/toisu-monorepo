@@ -5,8 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "lint": "eslint ."
+    "test": "mocha"
   },
   "engines": {
     "node": ">=14"
@@ -15,16 +14,12 @@
     "toisu",
     "middleware"
   ],
-  "files": [
-    "index.js"
-  ],
-  "repository": "qubyte/toisu-middleware-runner",
+  "files": [],
+  "repository": "github:qubyte/toisu-monorepo",
   "author": "Mark S. Everitt",
   "license": "MIT",
   "devDependencies": {
     "es2015-deferred": "^3.0.0",
-    "eslint": "^7.25.0",
-    "eslint-config-qubyte": "^4.1.0",
     "mocha": "^8.3.2",
     "sinon": "^10.0.0"
   }

@@ -4,6 +4,7 @@
 
 - Lowest supported version of node is now 14.
 - This library is an ES module and must be imported accordingly.
+- This module has been moved to the toisu scope as `@toisu/toisu`.
 
 ## 3.0.0
 

@@ -15,7 +15,7 @@ a promise and will always resolve asynchronously.
 
 With plain old ES2015:
 ```javascript
-import runner from 'toisu-middleware-runner';
+import runner from '@toisu/middleware-runner';
 
 // context will be used as the `this` value for middlewares.
 runner.call(context, req, res, middlewares)
@@ -29,7 +29,7 @@ runner.call(context, req, res, middlewares)
 
 With async-await:
 ```javascript
-import runner from 'toisu-middleware-runner';
+import runner from '@toisu/middleware-runner';
 
 async function example() {
   try {
