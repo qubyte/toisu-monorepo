@@ -1,4 +1,4 @@
-import runner from 'toisu-middleware-runner';
+import runner from '@toisu/middleware-runner';
 
 const stacks = new WeakMap();
 
@@ -30,7 +30,7 @@ export default class Toisu {
     };
   }
 
-  static defaultHandleError(req, res) {
+  static defaultHandleError(_req, res) {
     res.statusCode = 500;
     res.end();
   }
