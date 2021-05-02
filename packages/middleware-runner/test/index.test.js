@@ -125,4 +125,66 @@ describe('middleware-runner', () => {
     assert.ok(middlewares[0].calledOnce);
     assert.ok(middlewares[1].notCalled);
   });
+
+  it('resolves to true when the response is not writable before any middlewares are executed', async () => {
+    res.writable = false;
+
+    const result = await runner(req, res, middlewares);
+
+    assert.equal(result, true);
+    assert.ok(middlewares[0].notCalled);
+    assert.ok(middlewares[1].notCalled);
+  });
+
+  it('resolves to true when the response is no longer writable', async () => {
+    middlewares[0].callsFake(() => (res.writable = false));
+
+    const result = await runner(req, res, middlewares);
+
+    assert.equal(result, true);
+  });
+
+  it('resolves to true when all middlewares are executed and the response is no longer writable', async () => {
+    deferreds[0].resolve();
+    middlewares[1].callsFake(() => (res.writable = false));
+
+    const result = await runner(req, res, middlewares);
+
+    assert.equal(result, true);
+  });
+
+  it('resolves to true when the response headers were sent before any middlewares are executed', async () => {
+    res.headersSent = true;
+
+    const result = await runner(req, res, middlewares);
+
+    assert.equal(result, true);
+    assert.ok(middlewares[0].notCalled);
+    assert.ok(middlewares[1].notCalled);
+  });
+
+  it('resolves to true when the response headers are sent', async () => {
+    middlewares[0].callsFake(() => (res.headersSent = true));
+
+    const result = await runner(req, res, middlewares);
+
+    assert.equal(result, true);
+  });
+
+  it('resolves to true when all middlewares are executed and the response headers are sent', async () => {
+    middlewares[0].callsFake(() => (res.headersSent = true));
+
+    const result = await runner(req, res, middlewares);
+
+    assert.equal(result, true);
+  });
+
+  it('resolves to false when the respose headers are not sent and the response is still writable', async () => {
+    deferreds[0].resolve();
+    deferreds[1].resolve();
+
+    const result = await runner(req, res, middlewares);
+
+    assert.equal(result, false);
+  });
 });

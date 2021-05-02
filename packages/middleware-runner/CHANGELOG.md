@@ -1,3 +1,9 @@
+## v3.1.0
+
+The runner function now returns true when `res.headersSent` is true or
+`res.writable` is false. This allows the caller to know the status of the
+response object after the runner has done its job.
+
 ## v3.0.3
 
 - This module is now an ES module and must be imported accordingly.
