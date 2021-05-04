@@ -1,4 +1,4 @@
-import http from 'http';
+import { METHODS } from 'http';
 
 export default function normalizeHandlers(handlers) {
   const normalized = Object.create(null);
@@ -7,11 +7,10 @@ export default function normalizeHandlers(handlers) {
     throw new Error('Handlers must be an object with HTTP methods as keys.');
   }
 
-  for (const method of Object.keys(handlers)) {
+  for (const [method, handler] of Object.entries(handlers)) {
     const upperMethod = method.toUpperCase();
-    const handler = handlers[method];
 
-    if (http.METHODS.indexOf(upperMethod) === -1) {
+    if (!METHODS.includes(upperMethod)) {
       throw new Error(`Unknown method: ${method}`);
     }
 

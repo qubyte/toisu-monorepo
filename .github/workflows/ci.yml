@@ -18,7 +18,7 @@ jobs:
     - name: use node
       uses: actions/setup-node@v2
       with:
-        version: ${{ matrix.node_version }}
+        node-version: ${{ matrix.node_version }}
     - run: npm ci
     - run: npm test
   lint:
@@ -29,6 +29,6 @@ jobs:
     - name: use node 14
       uses: actions/setup-node@v2
       with:
-        version: 14.x
+        node-version: 14.x
     - run: npm ci
     - run: npm run lint
