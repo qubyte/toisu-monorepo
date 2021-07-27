@@ -115,7 +115,7 @@ describe('toisu', () => {
         assert.deepEqual(executed, [0, 1, 2, 3, 4, 5]);
       });
 
-      it('responds with a 404 status when the middlewares doesn\'t respond', async () => {
+      it('responds with a 404 status when the middlewares do not respond', async () => {
         const app = new Toisu();
 
         for (let i = 0; i < 10; i++) {
