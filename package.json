@@ -15,7 +15,7 @@
     "lerna": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^7.25.0",
+    "eslint": "^7.31.0",
     "eslint-config-qubyte": "^4.1.0"
   }
 }
