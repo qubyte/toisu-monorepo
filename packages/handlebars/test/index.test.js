@@ -1,7 +1,7 @@
 import { strict as assert } from 'assert';
 import supertest from 'supertest';
 import Toisu from '@toisu/toisu';
-import handlebars from '../index.js';
+import handlebars from '@toisu/handlebars';
 
 describe.only('handlebars', () => {
   it('is a function', () => {

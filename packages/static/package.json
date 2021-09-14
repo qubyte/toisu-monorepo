@@ -4,6 +4,9 @@
   "description": "A wrapper around serve-static for Toisu!",
   "main": "index.js",
   "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
   "scripts": {
     "test": "mocha"
   },

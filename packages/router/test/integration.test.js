@@ -2,7 +2,7 @@ import { strict as assert } from 'assert';
 import sinon from 'sinon';
 import supertest from 'supertest';
 import Toisu from '@toisu/toisu';
-import Router from '../index.js';
+import Router from '@toisu/router';
 
 describe('router', () => {
   const sandbox = sinon.createSandbox();
