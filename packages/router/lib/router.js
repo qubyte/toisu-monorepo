@@ -27,23 +27,18 @@ function makeRoute(path, preNormalizedHandlers, options) {
   };
 }
 
-// TODO: Make this a private class initialzer when ESLint supports it.
-const routes = new WeakMap();
-
 export default class Router {
-  constructor() {
-    routes.set(this, []);
-  }
+  #routes = [];
 
   route(path, middlewares, options) {
-    routes.get(this).push(makeRoute(path, middlewares, options));
+    this.#routes.push(makeRoute(path, middlewares, options));
   }
 
   get middleware() {
-    const routerRoutes = routes.get(this);
+    const routes = this.#routes;
 
     return function routerMiddleware(req, res) {
-      for (const route of routerRoutes) {
+      for (const route of routes) {
         const result = route(req);
 
         if (result) {
