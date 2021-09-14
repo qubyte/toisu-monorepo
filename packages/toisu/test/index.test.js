@@ -1,6 +1,6 @@
 import { strict as assert } from 'assert';
 import supertest from 'supertest';
-import Toisu from '../index.js';
+import Toisu from '@toisu/toisu';
 
 describe('toisu', () => {
   it('is a function', () => {

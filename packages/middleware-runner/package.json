@@ -4,6 +4,9 @@
   "description": "The core middleware runner for Toisu!",
   "type": "module",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
   "scripts": {
     "test": "mocha"
   },

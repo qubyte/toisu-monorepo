@@ -1,7 +1,7 @@
 import { strict as assert } from 'assert';
 import Toisu from '@toisu/toisu';
 import supertest from 'supertest';
-import * as toisuBody from '../index.js';
+import * as toisuBody from '@toisu/body';
 
 describe('body', () => {
   it('is an object', () => {
