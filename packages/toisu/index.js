@@ -1,25 +1,20 @@
 import runner from '@toisu/middleware-runner';
 
-const stacks = new WeakMap();
-
 export default class Toisu {
-  constructor() {
-    stacks.set(this, []);
-    this.handleError = Toisu.defaultHandleError;
-  }
+  #stack = [];
+
+  handleError = Toisu.defaultHandleError;
 
   use(middleware) {
-    stacks.get(this).push(middleware);
+    this.#stack.push(middleware);
     return this;
   }
 
   get requestHandler() {
-    const stack = stacks.get(this);
-
     return (req, res) => {
       const context = new Map();
 
-      return runner.call(context, req, res, stack)
+      return runner.call(context, req, res, this.#stack)
         .then(() => {
           if (!res.headersSent) {
             res.statusCode = 404;
