@@ -3,6 +3,7 @@
     "mocha": true
   },
   "rules": {
-    "max-statements": "off"
+    "max-statements": "off",
+    "no-invalid-this": "off"
   }
 }
