@@ -1,0 +1,36 @@
+{
+  "name": "@toisu/timings",
+  "version": "0.0.0",
+  "description": "A Toisu! middleware to add a convenience interface for creating server-timing headers on responses.",
+  "main": "index.js",
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": "github:qubyte/toisu-monorepo",
+  "keywords": [
+    "toisu",
+    "server timing",
+    "Server-Timing"
+  ],
+  "author": "Mark S. Everitt <mark.s.everitt@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [],
+  "dependencies": {
+    "on-headers": "^1.0.2"
+  },
+  "devDependencies": {
+    "@toisu/toisu": "^4.0.3",
+    "mocha": "^9.1.2",
+    "supertest": "^6.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
