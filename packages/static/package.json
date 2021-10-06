@@ -1,6 +1,6 @@
 {
   "name": "@toisu/static",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "A wrapper around serve-static for Toisu!",
   "main": "index.js",
   "type": "module",
@@ -21,7 +21,7 @@
     "node": ">=14"
   },
   "devDependencies": {
-    "@toisu/toisu": "^4.0.3",
+    "@toisu/toisu": "^4.0.4",
     "mocha": "^9.1.2",
     "sinon": "^11.1.2",
     "supertest": "^6.1.6"
