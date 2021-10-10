@@ -5,21 +5,17 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "postinstall": "lerna bootstrap",
-    "test": "lerna run test",
+    "test": "npm run test --workspaces",
     "lint": "eslint ."
   },
   "repository": "github:qubyte/toisu",
   "author": "Mark S. Everitt",
   "license": "MIT",
-  "dependencies": {
-    "lerna": "^4.0.0"
-  },
   "devDependencies": {
     "eslint": "^8.7.0",
-    "eslint-config-qubyte": "^4.1.0",
-    "mocha": "^9.2.0",
-    "sinon": "^12.0.1",
-    "supertest": "^6.2.2"
-  }
+    "eslint-config-qubyte": "^4.1.0"
+  },
+  "workspaces": [
+    "./packages/*"
+  ]
 }
