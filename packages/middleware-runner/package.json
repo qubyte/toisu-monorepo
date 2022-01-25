@@ -22,9 +22,7 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "devDependencies": {
-    "es2015-deferred": "^4.0.2",
-    "mocha": "^9.2.0",
-    "sinon": "^12.0.1"
+    "es2015-deferred": "^4.0.2"
   },
   "publishConfig": {
     "access": "public"

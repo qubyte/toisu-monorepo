@@ -28,9 +28,7 @@
     "body": "^5.1.0"
   },
   "devDependencies": {
-    "@toisu/toisu": "^4.0.4",
-    "mocha": "^9.2.0",
-    "supertest": "^6.2.2"
+    "@toisu/toisu": "^4.0.4"
   },
   "publishConfig": {
     "access": "public"
