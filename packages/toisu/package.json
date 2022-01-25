@@ -16,7 +16,7 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "^9.2.0",
-    "supertest": "^6.1.6"
+    "supertest": "^6.2.2"
   },
   "dependencies": {
     "@toisu/middleware-runner": "^3.0.5"
