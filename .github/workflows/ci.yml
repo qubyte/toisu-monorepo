@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node_version: [14, 16]
+        node_version: [14, 16, 18]
     steps:
     - name: checkout
       uses: actions/checkout@main
@@ -26,9 +26,25 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@main
-    - name: use node 14
+    - name: use node 18
       uses: actions/setup-node@v2
       with:
         node-version: 14.x
     - run: npm ci
     - run: npm run lint
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@main
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: javascript
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
