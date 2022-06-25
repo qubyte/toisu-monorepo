@@ -1,6 +1,6 @@
 {
   "name": "@toisu/toisu",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "Minimalist server framework inspired by Express and Koa, powered by promises. Ready for async-await.",
   "main": "index.js",
   "type": "module",
@@ -15,7 +15,7 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "dependencies": {
-    "@toisu/middleware-runner": "^3.0.5"
+    "@toisu/middleware-runner": "^3.0.6"
   },
   "engines": {
     "node": ">=14"

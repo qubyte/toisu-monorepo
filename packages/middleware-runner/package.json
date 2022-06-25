@@ -1,6 +1,6 @@
 {
   "name": "@toisu/middleware-runner",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "The core middleware runner for Toisu!",
   "type": "module",
   "main": "index.js",

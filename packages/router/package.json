@@ -1,6 +1,6 @@
 {
   "name": "@toisu/router",
-  "version": "6.0.3",
+  "version": "6.0.4",
   "description": "A routing middleware for Toisu!",
   "main": "index.js",
   "type": "module",
@@ -25,10 +25,10 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "devDependencies": {
-    "@toisu/toisu": "^4.0.4"
+    "@toisu/toisu": "^4.0.5"
   },
   "dependencies": {
-    "@toisu/middleware-runner": "^3.0.5",
+    "@toisu/middleware-runner": "^3.0.6",
     "path-to-regexp": "^6.2.0"
   },
   "publishConfig": {
