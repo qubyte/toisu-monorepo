@@ -1,5 +1,9 @@
 # History
 
+## v4.1.0
+
+Bumps serve-static to [1.15.0](https://github.com/expressjs/serve-static/blob/master/HISTORY.md#1150--2022-03-24).
+
 ## v4.0.0
 
 - The minimum version of Node.js now supported is 14.
