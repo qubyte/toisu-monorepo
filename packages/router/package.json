@@ -1,6 +1,6 @@
 {
   "name": "@toisu/router",
-  "version": "6.0.4",
+  "version": "6.0.5",
   "description": "A routing middleware for Toisu!",
   "main": "index.js",
   "type": "module",
