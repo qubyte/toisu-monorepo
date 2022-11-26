@@ -1,4 +1,4 @@
-import { METHODS } from 'http';
+import { METHODS } from 'node:http';
 
 export default function normalizeHandlers(handlers) {
   const normalized = Object.create(null);

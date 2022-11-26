@@ -1,5 +1,7 @@
-import { describe, it, beforeEach } from 'node:test';
-import { strict as assert } from 'assert';
+/* eslint no-invalid-this:off */
+
+import { describe, beforeEach, it } from 'node:test';
+import { strict as assert } from 'node:assert';
 import supertest from 'supertest';
 import Toisu from '@toisu/toisu';
 

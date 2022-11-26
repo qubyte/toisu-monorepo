@@ -1,5 +1,5 @@
 import { describe, it, beforeEach } from 'node:test';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import sinon from 'sinon';
 import supertest from 'supertest';
 import Toisu from '@toisu/toisu';

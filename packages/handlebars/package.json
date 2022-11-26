@@ -9,7 +9,10 @@
   },
   "repository": "github:qubyte/toisu-monorepo",
   "scripts": {
-    "test": "node test/*"
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=16"
   },
   "keywords": [
     "toisu",
