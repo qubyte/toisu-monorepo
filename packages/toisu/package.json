@@ -18,7 +18,7 @@
     "@toisu/middleware-runner": "^3.0.6"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "keywords": [
     "server",
