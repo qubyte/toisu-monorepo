@@ -1,3 +1,4 @@
+import { describe, it, beforeEach } from 'node:test';
 import { strict as assert } from 'assert';
 import sinon from 'sinon';
 import Deferred from 'es2015-deferred';
@@ -38,22 +39,22 @@ describe('middleware-runner', () => {
     assert.equal(middlewares[1].callCount, 1);
   });
 
-  it('resolves only after all middlewares have resolved', done => {
+  it('resolves only after all middlewares have resolved', async () => {
     let allResolved = false;
 
     Promise.all(deferreds).then(() => {
       allResolved = true;
     });
 
-    runner(req, res, middlewares)
-      .then(() => {
-        assert.ok(allResolved);
-        done();
-      });
+    const allDonePromise = runner(req, res, middlewares);
 
     for (const deferred of deferreds) {
       deferred.resolve();
     }
+
+    await allDonePromise;
+
+    assert.ok(allResolved);
   });
 
   it('passes the request and response objects to each middleware', async () => {
