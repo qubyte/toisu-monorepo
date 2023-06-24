@@ -1,5 +1,9 @@
 # History
 
+## v7.0.0
+
+- The lowest supported version of Node is now 16.
+
 ## v6.0.0
 
 - This package has been moved to the toisu scope: `@toisu/router`

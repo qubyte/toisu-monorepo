@@ -1,3 +1,7 @@
+## v4.0.0
+
+- The lowest supported version of Node is now 16.
+
 ## v3.1.0
 
 The runner function now returns true when `res.headersSent` is true or

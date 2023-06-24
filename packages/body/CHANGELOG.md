@@ -1,3 +1,7 @@
+## v4.0.0
+
+- The lowest supported version of Node is now 16.
+
 ## v3.0.0
 
 - This module is now published as part of the toisu scope: `@toisu/body`

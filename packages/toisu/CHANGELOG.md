@@ -1,5 +1,9 @@
 # Changelog
 
+## v5.0.0
+
+- The lowest supported version of Node is now 16.
+
 ## 4.0.1
 
 - Lowest supported version of node is now 14.
