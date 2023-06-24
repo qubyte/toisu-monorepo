@@ -5,15 +5,22 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "postinstall": "lerna bootstrap",
-    "test": "lerna run test",
     "lint": "eslint ."
   },
+  "workspaces": [
+    "packages/body",
+    "packages/handlebars",
+    "packages/middleware-runner",
+    "packages/router",
+    "packages/static",
+    "packages/timings",
+    "packages/toisu"
+  ],
   "repository": "github:qubyte/toisu",
   "author": "Mark S. Everitt",
   "license": "MIT",
   "dependencies": {
-    "lerna": "^5.5.4"
+    "lerna": "^7.0.2"
   },
   "devDependencies": {
     "eslint": "^8.24.0",
