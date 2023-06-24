@@ -1,9 +1,10 @@
+import { describe, it } from 'node:test';
 import { strict as assert } from 'assert';
 import supertest from 'supertest';
 import Toisu from '@toisu/toisu';
 import handlebars from '@toisu/handlebars';
 
-describe.only('handlebars', () => {
+describe('handlebars', () => {
   it('is a function', () => {
     assert.equal(typeof handlebars, 'function');
   });

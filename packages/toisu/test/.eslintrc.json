@@ -1,7 +1,4 @@
 {
-  "env": {
-    "mocha": true
-  },
   "rules": {
     "max-statements": "off",
     "no-invalid-this": "off"

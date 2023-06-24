@@ -1,5 +1,9 @@
 # History
 
+## v5.0.0
+
+- The lowest supported version of Node is now 16.
+
 ## v4.1.0
 
 Bumps serve-static to [1.15.0](https://github.com/expressjs/serve-static/blob/master/HISTORY.md#1150--2022-03-24).

@@ -9,7 +9,7 @@
   },
   "repository": "github:qubyte/toisu-monorepo",
   "scripts": {
-    "test": "mocha"
+    "test": "node test/*"
   },
   "keywords": [
     "toisu",

@@ -1,10 +1,11 @@
-import fs from 'fs';
+import { describe, it } from 'node:test';
+import { readFile } from 'node:fs/promises';
 import { strict as assert } from 'assert';
 import Toisu from '@toisu/toisu';
 import serveStatic from '@toisu/static';
 import supertest from 'supertest';
 
-const readme = fs.readFileSync(new URL('../README.md', import.meta.url), 'utf8').trim();
+const readme = (await readFile(new URL('../README.md', import.meta.url), 'utf8')).trim();
 
 assert.notEqual(readme.length, 0);
 

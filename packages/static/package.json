@@ -8,7 +8,7 @@
     ".": "./index.js"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "node test/*"
   },
   "repository": "github:qubyte/toisu-monorepo",
   "keywords": [
@@ -18,7 +18,7 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "devDependencies": {
     "@toisu/toisu": "^4.0.5"
