@@ -5,5 +5,8 @@
   "extends": "qubyte/ES2021-module",
   "parserOptions": {
     "ecmaVersion": "latest"
+  },
+  "rules": {
+    "no-invalid-this": "off"
   }
 }
