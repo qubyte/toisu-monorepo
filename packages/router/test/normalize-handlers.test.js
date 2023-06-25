@@ -1,5 +1,5 @@
 import { describe, it } from 'node:test';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import normalizeHandlers from '../lib/normalize-handlers.js';
 
 describe('normalizeHandlers', () => {

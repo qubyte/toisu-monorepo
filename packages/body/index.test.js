@@ -1,5 +1,5 @@
 import { describe, it } from 'node:test';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import Toisu from '@toisu/toisu';
 import supertest from 'supertest';
 import * as toisuBody from '@toisu/body';

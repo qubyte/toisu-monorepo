@@ -1,5 +1,5 @@
-import { describe, it, beforeEach } from 'node:test';
-import { strict as assert } from 'assert';
+import { describe, beforeEach, it } from 'node:test';
+import { strict as assert } from 'node:assert';
 import makeParams from '../lib/make-params.js';
 
 describe('makeParams', () => {

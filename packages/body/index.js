@@ -1,4 +1,4 @@
-import { promisify } from 'util';
+import { promisify } from 'node:util';
 import textBody from 'body';
 import jsonBody from 'body/json.js';
 import formBody from 'body/form.js';

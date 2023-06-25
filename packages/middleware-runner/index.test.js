@@ -1,9 +1,10 @@
 import { describe, it, beforeEach } from 'node:test';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import sinon from 'sinon';
 import Deferred from 'es2015-deferred';
 import runner from '@toisu/middleware-runner';
 
+// eslint-disable-next-line max-statements
 describe('middleware-runner', () => {
   const sandbox = sinon.createSandbox();
 
