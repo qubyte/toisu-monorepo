@@ -20,12 +20,12 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "dependencies": {
-    "lerna": "^7.0.2"
+    "lerna": "^7.3.0"
   },
   "devDependencies": {
-    "eslint": "^8.43.0",
+    "eslint": "^8.49.0",
     "eslint-config-qubyte": "^5.0.0",
-    "sinon": "^15.2.0",
+    "sinon": "^16.0.0",
     "supertest": "^6.3.3"
   }
 }
