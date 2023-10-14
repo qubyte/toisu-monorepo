@@ -18,7 +18,7 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "devDependencies": {
     "@toisu/toisu": "^4.0.5"

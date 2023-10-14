@@ -5,28 +5,36 @@ export default class Toisu {
 
   handleError = Toisu.defaultHandleError;
 
+  handleNotFound = Toisu.defaultHandleNotFound;
+
   use(middleware) {
     this.#stack.push(middleware);
     return this;
   }
 
   get requestHandler() {
-    return (req, res) => {
+    return async (req, res) => {
       const context = new Map();
 
-      return runner.call(context, req, res, this.#stack)
-        .then(() => {
-          if (!res.headersSent) {
-            res.statusCode = 404;
-            res.end();
-          }
-        })
-        .catch(error => this.handleError.call(context, req, res, error));
+      try {
+        await runner.call(context, req, res, this.#stack);
+
+        if (!res.headersSent) {
+          this.handleNotFound.call(context, req, res);
+        }
+      } catch (error) {
+        this.handleError.call(context, req, res, error);
+      }
     };
   }
 
-  static defaultHandleError(_req, res) {
-    res.statusCode = 500;
+  static defaultHandleNotFound(_req, res) {
+    res.statusCode = 404;
+    res.end();
+  }
+
+  static defaultHandleError(_req, res, error) {
+    res.statusCode = error.statusCode || 500;
     res.end();
   }
 }

@@ -34,6 +34,6 @@ describe('static', () => {
 
     const res = await supertest(app.requestHandler).get('/blarg');
 
-    assert.equal(res.statusCode, 500);
+    assert.equal(res.statusCode, 404);
   });
 });

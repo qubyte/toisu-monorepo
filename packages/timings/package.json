@@ -19,7 +19,7 @@
   "author": "Mark S. Everitt <mark.s.everitt@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "files": [],
   "dependencies": {

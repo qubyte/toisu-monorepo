@@ -11,7 +11,7 @@
     "test": "node --test"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "repository": "github:qubyte/toisu-monorepo",
   "keywords": [
