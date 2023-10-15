@@ -1,6 +1,6 @@
 ## v4.0.0
 
-- The lowest supported version of Node is now 16.
+- The lowest supported version of Node is now 18.
 
 ## v3.0.0
 
