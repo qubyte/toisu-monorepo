@@ -1,6 +1,6 @@
 {
   "name": "@toisu/static",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "A wrapper around serve-static for Toisu!",
   "main": "index.js",
   "type": "module",
@@ -21,7 +21,7 @@
     "node": ">=18"
   },
   "devDependencies": {
-    "@toisu/toisu": "^4.0.5"
+    "@toisu/toisu": "^5.0.0"
   },
   "dependencies": {
     "serve-static": "^1.15.0"
