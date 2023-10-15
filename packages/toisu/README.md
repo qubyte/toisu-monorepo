@@ -7,7 +7,7 @@ Toisu! is an Express/Koa inspired server micro-framework for Node.js. Toisu!:
  - Middleware share a context (`this`).
 
 The second point means that all middleware receive just two arguments, and look
-exactly like a Node.js request handler function. Like Express, Toisu allows you
+exactly like a Node.js request handler function. Like Express, Toisu! allows you
 to define a chain of middleware functions to pass the request and response
 objects through. Each middleware is called only after the promise returned by
 the one proceeding it has resolved. This avoids the need for a callback. If any
@@ -18,7 +18,7 @@ provided if you do not define your own).
 Beside being a modern approach to handling asynchronous tasks, middleware which
 returns a promise is ready for the future when async-await is a part of JS.
 
-Toisu is tested to work with Node 4.2 and up.
+Toisu! is tested to work with Node 18 and up.
 
 ## An example server
 
@@ -119,7 +119,13 @@ This future proofs Toisu!
 
 ### `class Toisu`
 
-Creates a new Toisu app.
+Creates a new Toisu! app.
+
+### `Toisu.defaultHandleNotFound`
+
+A default handler for when middleware has fun but response headers remain
+unsent. Toisu! interprests such circumstances to mean that the target URL is
+not found (a `404`` status code).
 
 ### `Toisu.defaultHandleError`
 
@@ -136,11 +142,19 @@ Middleware functions should take `(request, response)` objects as arguments, and
 will receive the shared context as their `this` value. Do not use arrow
 functions as middleware if you need to use the shared context.
 
+### `app.handleNotFound(request, response)`
+
+This is set to `Toisu.defaultHandleNotFound` by default. Replace it if you want
+custom logic to handle responses which haven't sent headers after they have
+passed through the middleware stack. The context (`this`) of the function call
+will be set to the same shared context as a regular middleware.
+
 ### `app.handleError(request, response, error)`
 
 This is set to `Toisu.defaultHandleError` by default. If a middleware throws or
 rejects then this function is called with the shared context. Replace it if you
-want custom logic for handling errors.
+want custom logic for handling errors. The context (`this`) of the function call
+will be set to the same shared context as a regular middleware.
 
 ### `app.requestHandler(request, response)`
 

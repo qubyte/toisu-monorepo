@@ -176,6 +176,33 @@ describe('toisu', () => {
         assert.deepEqual(executed, [0, 1, 2, 3, 4, 5]);
       });
 
+      it('allows the 404 error response to be customized', async () => {
+        const app = new Toisu();
+
+        app.handleNotFound = function (_req, res) {
+          res.writeHead(444).end(JSON.stringify(this.get('called')));
+        };
+
+        for (let i = 0; i < 10; i++) {
+          app.use(function () {
+            let called = this.get('called');
+
+            if (!called) {
+              called = [];
+              this.set('called', called);
+            }
+
+            called.push(i);
+          });
+        }
+
+        const server = supertest(app.requestHandler);
+        const res = await server.get('/');
+
+        assert.equal(res.statusCode, 444);
+        assert.equal(res.text, '[0,1,2,3,4,5,6,7,8,9]');
+      });
+
       it('allows the 500 error response to be customized', async () => {
         const app = new Toisu();
 
