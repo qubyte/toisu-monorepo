@@ -22,7 +22,7 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "dependencies": {
-    "handlebars": "^4.7.7"
+    "handlebars": "^4.7.8"
   },
   "devDependencies": {
     "@toisu/toisu": "^5.0.0"
