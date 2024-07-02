@@ -7,8 +7,7 @@ function makeRoute(path, preNormalizedHandlers, options) {
   const handlers = normalizeHandlers(preNormalizedHandlers);
   const allowedMethods = Object.keys(handlers);
   const allow = allowedMethods.sort().join(', ');
-  const keys = [];
-  const regex = pathToRegexp(path, keys, options);
+  const regex = pathToRegexp(path, options);
 
   function notAllowed(_req, res) {
     res.writeHead(405, { allow }).end();
@@ -20,7 +19,7 @@ function makeRoute(path, preNormalizedHandlers, options) {
 
     if (paramList) {
       return {
-        params: makeParams(keys, paramList),
+        params: makeParams(regex.keys, paramList),
         middlewares: handlers[req.method] || [notAllowed]
       };
     }
