@@ -24,7 +24,7 @@
     "@toisu/toisu": "^5.0.0"
   },
   "dependencies": {
-    "serve-static": "^1.15.0"
+    "serve-static": "^1.16.0"
   },
   "publishConfig": {
     "access": "public"
