@@ -7,7 +7,7 @@ function makeRoute(path, preNormalizedHandlers, options) {
   const handlers = normalizeHandlers(preNormalizedHandlers);
   const allowedMethods = Object.keys(handlers);
   const allow = allowedMethods.sort().join(', ');
-  const regex = pathToRegexp(path, options);
+  const { keys, regexp } = pathToRegexp(path, options);
 
   function notAllowed(_req, res) {
     res.writeHead(405, { allow }).end();
@@ -15,11 +15,11 @@ function makeRoute(path, preNormalizedHandlers, options) {
 
   return function match(req) {
     const { pathname } = new URL(req.url, 'http://none');
-    const paramList = regex.exec(pathname);
+    const paramList = regexp.exec(pathname);
 
     if (paramList) {
       return {
-        params: makeParams(regex.keys, paramList),
+        params: makeParams(keys, paramList),
         middlewares: handlers[req.method] || [notAllowed]
       };
     }
