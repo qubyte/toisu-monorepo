@@ -23,7 +23,7 @@
     "lerna": "^8.1.9"
   },
   "devDependencies": {
-    "eslint": "^9.20.0",
+    "eslint": "^9.20.1",
     "eslint-config-qubyte": "^6.0.0",
     "globals": "^15.15.0",
     "sinon": "^19.0.2",
