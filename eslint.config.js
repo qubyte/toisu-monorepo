@@ -1,11 +1,14 @@
-import globals from 'globals';
 import config from 'eslint-config-qubyte';
 
 export default [
   {
     languageOptions: {
       ...config.languageOptions,
-      globals: globals.nodeBuiltin
+      globals: {
+        Buffer: 'readable',
+        setTimeout: 'readable',
+        URL: 'readable'
+      }
     },
     rules: {
       ...config.rules,
