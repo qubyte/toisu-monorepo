@@ -25,7 +25,6 @@
   "devDependencies": {
     "eslint": "^9.20.1",
     "eslint-config-qubyte": "^6.0.0",
-    "globals": "^15.15.0",
     "sinon": "^19.0.2",
     "supertest": "^7.0.0"
   }
