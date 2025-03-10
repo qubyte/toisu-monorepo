@@ -20,7 +20,7 @@
   "author": "Mark S. Everitt",
   "license": "MIT",
   "dependencies": {
-    "lerna": "^8.2.0"
+    "lerna": "^8.2.1"
   },
   "devDependencies": {
     "eslint": "^9.21.0",
