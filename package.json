@@ -26,6 +26,6 @@
     "eslint": "^9.23.0",
     "eslint-config-qubyte": "^6.0.0",
     "sinon": "^20.0.0",
-    "supertest": "^7.1.0"
+    "supertest": "^7.1.1"
   }
 }
