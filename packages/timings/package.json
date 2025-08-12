@@ -23,7 +23,7 @@
   },
   "files": [],
   "dependencies": {
-    "on-headers": "^1.0.2"
+    "on-headers": "^1.1.0"
   },
   "devDependencies": {
     "@toisu/toisu": "^5.0.0"
